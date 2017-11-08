@@ -1,0 +1,62 @@
+﻿@model domaine.entities.seller
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_BackOffice.cshtml";
+}
+
+<div class="right_col" role="main">
+    <h2>Details</h2>
+
+    <div>
+     
+            <h4>seller</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.latidue)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.latidue)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.longitude)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.longitude)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.phoneNumber)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.phoneNumber)
+                </dd>
+
+            </dl>
+    </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
