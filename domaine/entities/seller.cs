@@ -6,14 +6,14 @@ namespace domaine.entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("skiworld.seller")]
+    
     public partial class seller
     {
         public int id { get; set; }
 
-        public double? latidue { get; set; }
+        public double latitude { get; set; }
 
-        public double? longitude { get; set; }
+        public double longitude { get; set; }
 
         [StringLength(255)]
         public string email { get; set; }

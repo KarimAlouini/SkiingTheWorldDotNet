@@ -6,7 +6,6 @@ namespace domaine.entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("skiworld.job_apply")]
     public partial class job_apply
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

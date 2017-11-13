@@ -1,62 +1,60 @@
-﻿@model domaine.entities.seller
+﻿@model web.Models.RevendeurModel
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_BackOffice.cshtml";
 }
 
-<div class="right_col" role="main">
-    <h2>Details</h2>
+
 
     <div>
-     
-            <h4>seller</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.latidue)
-                </dt>
+        <h4>RevendeurModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.latidue)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.longitude)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tel)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.longitude)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tel)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.email)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.email)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Longitude)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.name)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.name)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Latitude)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.phoneNumber)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.phoneNumber)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-            </dl>
-    </div>
+        </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
+    

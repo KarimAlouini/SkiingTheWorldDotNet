@@ -4,35 +4,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SpecificServices;
 using web.Models;
 
 namespace web.Controllers
 {
     public class RevendeurController : Controller
     {
+        RevendeurService rvs = new RevendeurService();
         // GET: Revendeur
         public ActionResult Index()
         {
-
-            List<seller> model = new List<seller>();
-            using(SWModel swM = new SWModel())
+            var sellers = rvs.GetAll();
+            List<RevendeurModel> lM = new List<RevendeurModel>();
+            System.Diagnostics.Debug.WriteLine("count "+sellers.ToList().Count);
+            foreach (var item in sellers)
             {
-                model = swM.seller.ToList<seller>();
+                lM.Add(new RevendeurModel()
+                {
+                   tel = item.phoneNumber,
+                    Id = item.id,
+                    Name = item.name,
+                    Email = item.email,
+                    Latitude = item.latitude,
+                    Longitude = item.longitude
+                   
+                   
+
+                });
+
+              
             }
-            
-            return View(model);
+
+
+
+
+            return View(lM);
         }
 
         // GET: Revendeur/Details/5
         public ActionResult Details(int id)
         {
-            seller model = new seller();
-            using (SWModel swM = new SWModel())
-            {
-                model = swM.seller.Where(s => s.id == id).First();
-            }
+          seller pe = rvs.GetById(id);
 
-            return View(model);
+            RevendeurModel pm = new RevendeurModel()
+            {
+                tel = pe.phoneNumber,
+                Longitude =pe.longitude ,
+                Latitude = pe.latitude,
+               Name = pe.name,
+               Email = pe.email,
+               Id = pe.id
+
+
+
+
+            };
+            return View(pm);
         }
 
         // GET: Revendeur/Create
@@ -44,13 +72,27 @@ namespace web.Controllers
 
         // POST: Revendeur/Create
         [HttpPost]
-        public ActionResult Create(seller collection)
+        public ActionResult Create(RevendeurModel collection)
         {
-            
-                // TODO: Add insert logic here
-                SWModel m = new SWModel();
-                m.seller.Add(collection);
-                m.SaveChanges();
+
+            seller s1 = new seller
+            {
+
+                name = collection.Name,
+                phoneNumber = collection.tel,
+                email = collection.Email,
+                latitude = collection.Latitude,
+                longitude = collection.Longitude
+            };
+
+
+
+
+
+              
+
+            rvs.Add(s1);
+            rvs.Commit();
 
                 return RedirectToAction("Index");
             

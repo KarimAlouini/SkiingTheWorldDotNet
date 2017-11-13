@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using domaine.entities;
 
 
 namespace Mehdi.data.Infrastructure
@@ -11,14 +12,14 @@ namespace Mehdi.data.Infrastructure
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {
         // factory va fournir le context
-        private Context dataContext;
+        private SWModel dataContext;
         /// <summary>
         /// propriéte full
         /// </summary>
-        public Context DataContext { get { return dataContext; } }
+        public SWModel DataContext { get { return dataContext; } }
         public DatabaseFactory()
         {
-            dataContext = new Context();
+            dataContext = new SWModel();
         }
         protected override void DisposeCore()
         {

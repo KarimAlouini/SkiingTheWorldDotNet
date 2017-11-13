@@ -6,7 +6,6 @@ namespace domaine.entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("skiworld.recharging_coupon")]
     public partial class recharging_coupon
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

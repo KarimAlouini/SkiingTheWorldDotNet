@@ -6,7 +6,6 @@ namespace domaine.entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("skiworld.event_invitation")]
     public partial class event_invitation
     {
         [Key]

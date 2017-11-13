@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Mehdi.data;
 using data;
+using domaine.entities;
 
 namespace Mehdi.data.Infrastructure
 {
 	public class UnitOfWork : IUnitOfWork
 	{
 
-		private Context dataContext;
+        private SWModel dataContext;
 
 		IDatabaseFactory dbFactory;
 		public UnitOfWork(IDatabaseFactory dbFactory)

@@ -17,9 +17,9 @@ namespace web.Models
         [StringLength(13,ErrorMessage ="Please input a valid phone number")]
         public string tel { get; set; }
         [Required(ErrorMessage ="Please input coordinates")]
-        public float Longitude { get; set; }
+        public double Longitude { get; set; }
         [Required(ErrorMessage = "Please input coordinates")]
-        public float Latitude { get; set; }
+        public double Latitude { get; set; }
         [Required(ErrorMessage ="Please input an email address")]
         [DataType(DataType.EmailAddress,ErrorMessage ="Please specify a valid email address")]
         public String Email { get; set; }

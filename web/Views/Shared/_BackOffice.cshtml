@@ -12,7 +12,7 @@
     <link href="/Content/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="/Content/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+    <link href="~/Content/dt/dataTables.bootstrap.min.css" rel="stylesheet" />
     <!-- bootstrap-progressbar -->
     <link href="/Content/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -21,6 +21,7 @@
     <link href="/Content/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="/Content/build/css/custom.min.css" rel="stylesheet">
+    
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -250,8 +251,10 @@
             </div>
 
 
-            <div>
+        <div>
+            <div class="right_col" role="main">
                 @RenderBody()
+                </div>
             </div>
 
             <footer>
@@ -263,6 +266,7 @@
             <!-- /footer content -->
         </div>
     </div>
+   
     <!-- jQuery -->
     <script src="/Content/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -302,5 +306,6 @@
     <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="/Content/build/js/custom.min.js"></script>
+   @RenderSection("scripts",required:false)
 </body>
 </html>

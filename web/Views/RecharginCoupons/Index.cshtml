@@ -1,0 +1,71 @@
+﻿@model IEnumerable<domaine.entities.recharging_coupon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_BackOffice.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    @Html.ValidationMessage("error");
+</p>
+<table class="table table-striped" id="dt">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateGenerated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isUsed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateGenerated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isUsed)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
+   @section scripts
+   {
+       <script src="~/Content/dt/jquery.dataTables.js"></script>
+       <script src="~/Content/dt/dataTables.bootstrap.min.js"></script>
+       <script src="~/Content/dt/datatables.min.js"></script>
+   }
+
+
+
+<script>
+    $(document).ready(function () {
+        
+        $('#dt').DataTable();
+    });
+</script>

@@ -6,7 +6,6 @@ namespace domaine.entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("skiworld.ad_area_purchase_request")]
     public partial class ad_area_purchase_request
     {
         public int id { get; set; }

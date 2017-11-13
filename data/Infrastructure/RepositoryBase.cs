@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-
+using domaine.entities;
 
 
 namespace Mehdi.data.Infrastructure
@@ -17,7 +17,7 @@ namespace Mehdi.data.Infrastructure
         //l'instencié 
         //cette objet sera référencié par une varrible
     {
-        private Context dataContext;
+        private SWModel dataContext;
         private IDbSet<T> dbset;
         IDatabaseFactory databaseFactory;
 
@@ -28,7 +28,7 @@ namespace Mehdi.data.Infrastructure
             dbset = DataContext.Set<T>();
         }
 
-        protected Context DataContext
+        protected SWModel DataContext
         {
             get { return dataContext = databaseFactory.DataContext; }
         }

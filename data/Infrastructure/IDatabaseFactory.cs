@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using domaine.entities;
 
 
 namespace Mehdi.data.Infrastructure
@@ -12,7 +12,7 @@ namespace Mehdi.data.Infrastructure
    public interface IDatabaseFactory : IDisposable
     {
         // instancié l'objet Context
-        Context DataContext { get; }
+        SWModel DataContext { get; }
     }
 
     //1er principe

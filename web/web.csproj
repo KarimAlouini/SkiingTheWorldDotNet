@@ -97,6 +97,10 @@
       <HintPath>..\packages\MySql.Data.Entity.6.9.10\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -160,9 +164,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -209,17 +210,22 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RecharginCouponsController.cs" />
     <Compile Include="Controllers\RevendeurController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddCouponModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RevendeurModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Util\MessageResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -231,6 +237,10 @@
     <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\flipclock.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\dt\dataTables.bootstrap.min.css" />
+    <Content Include="Content\dt\dataTables.bootstrap.min.js" />
+    <Content Include="Content\dt\datatables.min.js" />
+    <Content Include="Content\dt\jquery.dataTables.js" />
     <Content Include="Content\images\404_bg.jpg" />
     <Content Include="Content\images\about_img1.jpg" />
     <Content Include="Content\images\active_step.jpg" />
@@ -477,6 +487,7 @@
     <Content Include="Content\images\visa.jpg" />
     <Content Include="Content\images\widget_newsletter.jpg" />
     <Content Include="Content\jquery-3.2.1.min.js" />
+    <Content Include="Content\knob\jquery.knob.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -548,17 +559,19 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BackOffice\Index.cshtml" />
     <Content Include="Views\Shared\_BackOffice.cshtml" />
-    <Content Include="Views\Revendeur\Index.cshtml" />
     <Content Include="Views\Revendeur\Create.cshtml" />
-    <Content Include="Views\Revendeur\Details.cshtml" />
-    <Content Include="Views\Revendeur\Delete.cshtml" />
     <Content Include="Views\Shared\_Home.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Revendeur\Index.cshtml" />
+    <Content Include="Views\Revendeur\Details.cshtml" />
+    <Content Include="Views\RecharginCoupons\Index.cshtml" />
+    <Content Include="Views\RecharginCoupons\Generate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\build\" />
     <Folder Include="Content\vendors\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -576,6 +589,14 @@
     <ProjectReference Include="..\domaine\domain.csproj">
       <Project>{7e4bfdfa-6a2f-439b-8924-f10192db45ba}</Project>
       <Name>domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{AB1F3970-7F49-4C03-8C09-A6BC07E2D828}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpecificServices\SpecificServices.csproj">
+      <Project>{9B90347C-A0AD-4F3B-B215-8688AA5B4865}</Project>
+      <Name>SpecificServices</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

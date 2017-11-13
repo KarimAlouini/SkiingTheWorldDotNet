@@ -413,6 +413,8 @@ namespace domaine.entities
                 .HasMany(e => e.event1)
                 .WithMany(e => e.user2)
                 .Map(m => m.ToTable("event_user").MapLeftKey("users_id").MapRightKey("Event_id"));
+
+            modelBuilder.Entity<seller>().ToTable("sellers");
         }
     }
 }
