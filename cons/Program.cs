@@ -17,9 +17,10 @@ namespace cons
         static void Main(string[] args)
         {
          
-
+            SWModel m = new SWModel();
+            Console.WriteLine(m.access_tokens.Count());
             Console.ReadKey();
-           
+
         }
     }
 }

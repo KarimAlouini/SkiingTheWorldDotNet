@@ -225,6 +225,7 @@
     <Compile Include="Models\RevendeurModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Util\LoginResponse.cs" />
     <Compile Include="Util\MessageResponse.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -566,12 +567,12 @@
     <Content Include="Views\Revendeur\Details.cshtml" />
     <Content Include="Views\RecharginCoupons\Index.cshtml" />
     <Content Include="Views\RecharginCoupons\Generate.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\build\" />
     <Folder Include="Content\vendors\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -73,7 +73,7 @@ namespace domaine.entities
         [StringLength(255)]
         public string phoneNumber { get; set; }
 
-        public int? role { get; set; }
+        public string role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<access_tokens> access_tokens { get; set; }
