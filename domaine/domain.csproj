@@ -100,6 +100,9 @@
     <Compile Include="entities\testlevel.cs" />
     <Compile Include="entities\user.cs" />
     <Compile Include="entities\user_event.cs" />
+    <Compile Include="Migrations\201711140003079_adding sellers.cs" />
+    <Compile Include="Migrations\201711140003079_adding sellers.Designer.cs">
+      <DependentUpon>201711140003079_adding sellers.cs</DependentUpon>
     <Compile Include="Migrations\201711141411324_last.cs" />
     <Compile Include="Migrations\201711141411324_last.Designer.cs">
       <DependentUpon>201711141411324_last.cs</DependentUpon>
@@ -114,6 +117,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711140003079_adding sellers.resx">
+      <DependentUpon>201711140003079_adding sellers.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\201711141411324_last.resx">
       <DependentUpon>201711141411324_last.cs</DependentUpon>
     </EmbeddedResource>

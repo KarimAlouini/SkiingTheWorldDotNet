@@ -14,9 +14,9 @@ namespace domaine.entities
 
         [StringLength(255)]
         public string value { get; set; }
-
-        public int user_id { get; set; }
-
+        
+        public int userId{ get; set; }
+        [ForeignKey("userId")]
         public virtual user user { get; set; }
     }
 }

@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using domaine.entities;
 using Newtonsoft.Json;
+using SpecificServices;
+using SpecificServices.services;
 using web.Models;
 using web.Util;
 
@@ -20,24 +22,40 @@ namespace web.Controllers
         public ActionResult Login()
         {
             return View();
+
         }
 
+       
+
         [HttpPost]
-        public ActionResult Login(LoginModel model)
+        public ActionResult Login(string login,string password)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUrl);
             request.Method = "POST";
-            request.Headers.Add("login",model.Login);
-            request.Headers.Add("password",model.Password);
+            request.Headers.Add("login",login);
+            request.Headers.Add("password",password);
+            
             using (var reader = new StreamReader(request.GetResponse().GetResponseStream(), Encoding.UTF8))
             {
                 string responseText = reader.ReadToEnd();
-                MessageResponse response = JsonConvert.DeserializeObject<MessageResponse>(responseText);
+                LoginResponse response = JsonConvert.DeserializeObject<LoginResponse>(responseText);
+                if (response.Code == 0)
+                {
+                    Session["user"] = response.Token.user;
+                    return RedirectToAction("Index", "Home");
+                }
+
+                else
+                {
+
+
+                    return RedirectToAction("Login",new {message=response.Message});
+                }    
 
 
             }
 
-            return View();
+            
 
         }
     }

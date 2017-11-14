@@ -331,7 +331,7 @@ namespace domaine.entities
             modelBuilder.Entity<user>()
                 .HasMany(e => e.access_tokens)
                 .WithRequired(e => e.user)
-                .HasForeignKey(e => e.user_id)
+                .HasForeignKey(e => e.userId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<user>()

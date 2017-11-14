@@ -231,6 +231,7 @@
     <Compile Include="Models\RevendeurModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Util\LoginResponse.cs" />
     <Compile Include="Util\MessageResponse.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -587,6 +588,7 @@
     <Content Include="Views\Revendeur\Details.cshtml" />
     <Content Include="Views\RecharginCoupons\Index.cshtml" />
     <Content Include="Views\RecharginCoupons\Generate.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\souscategories\Create.cshtml" />
     <Content Include="Views\souscategories\Delete.cshtml" />
     <Content Include="Views\souscategories\Details.cshtml" />
@@ -604,7 +606,6 @@
     <Folder Include="Content\css\maps\" />
     <Folder Include="Content\js\" />
     <Folder Include="Content\vendors\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

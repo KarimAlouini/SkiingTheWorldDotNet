@@ -1,6 +1,9 @@
-﻿
+﻿@using domaine.entities
+
 @{
     ViewBag.Title = "_Home";
+    user u = (user)Session["user"];
+    
 }
 
 <!DOCTYPE html>
@@ -44,13 +47,32 @@
                     <!-- CONTAINER -->
                     <div class="container clearfix">
                         <ul class="secondary_menu">
-                            <li><a href="my-account.html">my account</a></li>
-                            <li><a href="my-account.html">Register</a></li>
+                            
+                            @{
+                                if (u != null)
+                                {
+
+
+                                    <li><a href="my-account.html">Register</a></li>
+                                    <li><a href="@Url.Action("Login","User")">Login</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#">My account</a></li>
+                                }
+                            }
+                          
                         </ul>
 
                         <div class="live_chat"><a href="javascript:void(0);"><i class="fa fa-comment-o"></i> </a></div>
-
-                        <div class="phone_top">have a question? <a href="tel:1 800 888 2828">(+216)91524867</a></div>
+                    
+                    @{
+                        if (u != null)
+                        {
+                            <div class="phone_top">Hello @Html.Raw(u.login) <a href="tel:1 800 888 2828">(+216)91524867</a></div>
+                        }
+                    }
+                        
                     </div><!-- //CONTAINER -->
                 </div><!-- TOP INFO -->
                 <!-- MENU BLOCK -->
