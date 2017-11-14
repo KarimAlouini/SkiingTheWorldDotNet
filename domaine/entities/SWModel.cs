@@ -1,3 +1,5 @@
+using SkiingTheWorld_PI.Domaine.Entities;
+
 namespace domaine.entities
 {
     using System;
@@ -37,6 +39,8 @@ namespace domaine.entities
         public virtual DbSet<testlevel> testlevel { get; set; }
         public virtual DbSet<user> user { get; set; }
         public virtual DbSet<user_event> user_event { get; set; }
+        public virtual DbSet<product> product { get; set; }
+        public virtual DbSet<souscategorie> souscategories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -413,6 +417,7 @@ namespace domaine.entities
                 .HasMany(e => e.event1)
                 .WithMany(e => e.user2)
                 .Map(m => m.ToTable("event_user").MapLeftKey("users_id").MapRightKey("Event_id"));
+
 
             modelBuilder.Entity<seller>().ToTable("sellers");
         }

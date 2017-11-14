@@ -28,6 +28,8 @@ namespace domaine.entities
             testlevel = new HashSet<testlevel>();
             user_event = new HashSet<user_event>();
             event1 = new HashSet<_event>();
+
+
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -72,6 +74,7 @@ namespace domaine.entities
 
         [StringLength(255)]
         public string phoneNumber { get; set; }
+        
 
         public int? role { get; set; }
 

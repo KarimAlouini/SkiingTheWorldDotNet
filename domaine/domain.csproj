@@ -88,18 +88,21 @@
     <Compile Include="entities\offer.cs" />
     <Compile Include="entities\offermessage.cs" />
     <Compile Include="entities\offerrating.cs" />
+    <Compile Include="entities\product.cs" />
     <Compile Include="entities\questions.cs" />
     <Compile Include="entities\recharging_coupon.cs" />
     <Compile Include="entities\reservation.cs" />
     <Compile Include="entities\seller.cs" />
+    <Compile Include="entities\Shop.cs" />
+    <Compile Include="entities\souscategorie.cs" />
     <Compile Include="entities\SWModel.cs" />
     <Compile Include="entities\test.cs" />
     <Compile Include="entities\testlevel.cs" />
     <Compile Include="entities\user.cs" />
     <Compile Include="entities\user_event.cs" />
-    <Compile Include="Migrations\201711102232519_test.cs" />
-    <Compile Include="Migrations\201711102232519_test.Designer.cs">
-      <DependentUpon>201711102232519_test.cs</DependentUpon>
+    <Compile Include="Migrations\201711141411324_last.cs" />
+    <Compile Include="Migrations\201711141411324_last.Designer.cs">
+      <DependentUpon>201711141411324_last.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,8 +114,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711102232519_test.resx">
-      <DependentUpon>201711102232519_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711141411324_last.resx">
+      <DependentUpon>201711141411324_last.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

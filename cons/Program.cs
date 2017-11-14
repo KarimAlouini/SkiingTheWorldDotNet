@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using SpecificServices.services;
 
 namespace cons
 {
@@ -17,8 +18,10 @@ namespace cons
         static void Main(string[] args)
         {
          
-
+            SousCategorieService sc = new SousCategorieService();
+            Console.WriteLine(sc.GetAll().Count());
             Console.ReadKey();
+
            
         }
     }

@@ -1,0 +1,107 @@
+﻿@model domaine.entities.product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_BackOffice.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sousCategorieProd.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sousCategorieProd.Libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarquecategorieProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarquecategorieProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modele)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Reference }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

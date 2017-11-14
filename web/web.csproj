@@ -210,11 +210,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\productsController.cs" />
     <Compile Include="Controllers\RecharginCouponsController.cs" />
     <Compile Include="Controllers\RevendeurController.cs" />
+    <Compile Include="Controllers\souscategoriesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711141408482_modif 14-11.cs" />
+    <Compile Include="Migrations\201711141408482_modif 14-11.Designer.cs">
+      <DependentUpon>201711141408482_modif 14-11.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -244,6 +250,7 @@
     <Content Include="Content\images\404_bg.jpg" />
     <Content Include="Content\images\about_img1.jpg" />
     <Content Include="Content\images\active_step.jpg" />
+    <Content Include="Content\images\american-express.png" />
     <Content Include="Content\images\articles\1.jpg" />
     <Content Include="Content\images\articles\1_full.jpg" />
     <Content Include="Content\images\articles\2.jpg" />
@@ -294,6 +301,7 @@
     <Content Include="Content\images\checkout_arrow.jpg" />
     <Content Include="Content\images\comment_bord.jpg" />
     <Content Include="Content\images\comment_right_b.jpg" />
+    <Content Include="Content\images\cropper.jpg" />
     <Content Include="Content\images\discover.jpg" />
     <Content Include="Content\images\done_step.jpg" />
     <Content Include="Content\images\done_step2.jpg" />
@@ -315,12 +323,23 @@
     <Content Include="Content\images\gallery\7.jpg" />
     <Content Include="Content\images\gallery\8.jpg" />
     <Content Include="Content\images\gallery\9.jpg" />
+    <Content Include="Content\images\img.jpg" />
+    <Content Include="Content\images\inbox.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\mastercard.png" />
     <Content Include="Content\images\master_card.jpg" />
+    <Content Include="Content\images\media.jpg" />
     <Content Include="Content\images\my_account_bg.jpg" />
     <Content Include="Content\images\paypal.jpg" />
+    <Content Include="Content\images\paypal.png" />
+    <Content Include="Content\images\picture.jpg" />
     <Content Include="Content\images\preloader.gif" />
     <Content Include="Content\images\premium_post.jpg" />
+    <Content Include="Content\images\prod-1.jpg" />
+    <Content Include="Content\images\prod-2.jpg" />
+    <Content Include="Content\images\prod-3.jpg" />
+    <Content Include="Content\images\prod-4.jpg" />
+    <Content Include="Content\images\prod-5.jpg" />
     <Content Include="Content\images\school_sale.jpg" />
     <Content Include="Content\images\shoes_page.jpg" />
     <Content Include="Content\images\skilogo.png" />
@@ -482,9 +501,11 @@
     <Content Include="Content\images\tovar\women\new\5.jpg" />
     <Content Include="Content\images\tovar\women\new\6.jpg" />
     <Content Include="Content\images\update_bg.jpg" />
+    <Content Include="Content\images\user.png" />
     <Content Include="Content\images\video_img.jpg" />
     <Content Include="Content\images\vip_post.jpg" />
     <Content Include="Content\images\visa.jpg" />
+    <Content Include="Content\images\visa.png" />
     <Content Include="Content\images\widget_newsletter.jpg" />
     <Content Include="Content\jquery-3.2.1.min.js" />
     <Content Include="Content\knob\jquery.knob.js" />
@@ -566,10 +587,22 @@
     <Content Include="Views\Revendeur\Details.cshtml" />
     <Content Include="Views\RecharginCoupons\Index.cshtml" />
     <Content Include="Views\RecharginCoupons\Generate.cshtml" />
+    <Content Include="Views\souscategories\Create.cshtml" />
+    <Content Include="Views\souscategories\Delete.cshtml" />
+    <Content Include="Views\souscategories\Details.cshtml" />
+    <Content Include="Views\souscategories\Edit.cshtml" />
+    <Content Include="Views\souscategories\Index.cshtml" />
+    <Content Include="Views\products\Delete.cshtml" />
+    <Content Include="Views\products\Details.cshtml" />
+    <Content Include="Views\products\Edit.cshtml" />
+    <Content Include="Views\products\Index.cshtml" />
+    <Content Include="Views\products\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\build\" />
+    <Folder Include="Content\css\maps\" />
+    <Folder Include="Content\js\" />
     <Folder Include="Content\vendors\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
@@ -598,6 +631,11 @@
       <Project>{9B90347C-A0AD-4F3B-B215-8688AA5B4865}</Project>
       <Name>SpecificServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711141408482_modif 14-11.resx">
+      <DependentUpon>201711141408482_modif 14-11.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
