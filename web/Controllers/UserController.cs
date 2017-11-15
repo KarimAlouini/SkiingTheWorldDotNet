@@ -42,6 +42,8 @@ namespace web.Controllers
                 if (response.Code == 0)
                 {
                     Session["user"] = response.Token.user;
+                    Session["token"] = response.Token.value;
+                    System.Diagnostics.Debug.WriteLine(response.Token.value);
                     return RedirectToAction("Index", "Home");
                 }
 

@@ -18,8 +18,11 @@ namespace cons
         static void Main(string[] args)
         {
          
-            SousCategorieService sc = new SousCategorieService();
-            Console.WriteLine(sc.GetAll().Count());
+            RevendeurService s = new RevendeurService();
+            foreach (seller seller in s.GetAll())
+            {
+                Console.WriteLine(seller.ImageName);
+            }
             Console.ReadKey();
 
            

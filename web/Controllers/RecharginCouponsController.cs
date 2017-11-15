@@ -16,6 +16,7 @@ namespace web.Controllers
     public class RecharginCouponsController : Controller
     {
         public string BaseUrl = "http://localhost:18080/SkiWorld-web/v0/secured/coupons";
+        private user currentUser;
 
         // GET: RecharginCoupons
         public ActionResult Index()
@@ -25,13 +26,34 @@ namespace web.Controllers
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUrl);
             request.Method = "GET";
-            request.Headers.Add("Authorization", "xa");
-            using (var reader = new StreamReader(request.GetResponse().GetResponseStream(), Encoding.UTF8))
+            currentUser = Session["user"] as user;
+            request.Headers.Add("Authorization", Session["token"] as string);
+           
+            try
             {
-                string responseText = reader.ReadToEnd();
-                coupons = Newtonsoft.Json.JsonConvert.DeserializeObject<List<recharging_coupon>>(responseText);
+               
+                using (var reader = new StreamReader(request.GetResponse().GetResponseStream(), Encoding.UTF8))
+                {
+                    string responseText = reader.ReadToEnd();
+                    coupons = Newtonsoft.Json.JsonConvert.DeserializeObject<List<recharging_coupon>>(responseText);
+                    System.Diagnostics.Debug.WriteLine(coupons.Count);
 
+                }
             }
+            catch (Exception e)
+            {
+                return RedirectToAction("Error403", "Misc");
+            }
+
+
+                
+
+                
+                   
+                
+               
+            
+           
 
 
 

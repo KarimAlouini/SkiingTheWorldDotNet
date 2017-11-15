@@ -7,13 +7,13 @@ namespace domaine.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class addingsellers : IMigrationMetadata
+    public sealed partial class Addedimagetoseller : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addingsellers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Addedimagetoseller));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711140003079_adding sellers"; }
+            get { return "201711141736259_Added image to seller"; }
         }
         
         string IMigrationMetadata.Source

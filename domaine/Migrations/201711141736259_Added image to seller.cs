@@ -3,11 +3,11 @@ namespace domaine.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addingsellers : DbMigration
+    public partial class Addedimagetoseller : DbMigration
     {
         public override void Up()
         {
-           
+            
             
             CreateTable(
                 "dbo.sellers",
@@ -19,6 +19,7 @@ namespace domaine.Migrations
                         email = c.String(maxLength: 255, unicode: false),
                         name = c.String(maxLength: 255, unicode: false),
                         phoneNumber = c.String(maxLength: 255, unicode: false),
+                        ImageName = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.id);
             
@@ -27,6 +28,7 @@ namespace domaine.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.products", "sousCategorieProdId", "dbo.souscategories");
             DropForeignKey("dbo.user_event", "myEvents_id", "dbo._event");
             DropForeignKey("dbo.user_event", "myParticipation_id", "dbo._event");
             DropForeignKey("dbo.event_keyword", "keyword_id", "dbo.keywords");
@@ -71,6 +73,7 @@ namespace domaine.Migrations
             DropIndex("dbo.test_questions", new[] { "tests_idTest" });
             DropIndex("dbo.event_user", new[] { "Event_id" });
             DropIndex("dbo.event_user", new[] { "users_id" });
+            DropIndex("dbo.products", new[] { "sousCategorieProdId" });
             DropIndex("dbo.keywords", new[] { "event_id" });
             DropIndex("dbo.user_event", new[] { "myEvents_id" });
             DropIndex("dbo.user_event", new[] { "myParticipation_id" });
@@ -108,6 +111,8 @@ namespace domaine.Migrations
             DropTable("dbo.event_user");
             DropTable("dbo.sellers");
             DropTable("dbo.recharging_coupon");
+            DropTable("dbo.souscategories");
+            DropTable("dbo.products");
             DropTable("dbo.keywords");
             DropTable("dbo.user_event");
             DropTable("dbo.questions");
