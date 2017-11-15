@@ -599,23 +599,23 @@
     <Content Include="Views\souscategories\Details.cshtml" />
     <Content Include="Views\souscategories\Edit.cshtml" />
     <Content Include="Views\souscategories\Index.cshtml" />
-    <Content Include="Views\products\Create.cshtml" />
     <Content Include="Views\products\Delete.cshtml" />
     <Content Include="Views\products\Details.cshtml" />
     <Content Include="Views\products\Edit.cshtml" />
     <Content Include="Views\products\Index.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Shop\SubCategory.cshtml" />
-    <Content Include="Views\products\Create.cshtml" />
     <Content Include="Views\Misc\Error403.cshtml" />
     <Content Include="Views\Misc\Error404.cshtml" />
     <Content Include="Views\Revendeur\AllSellers.cshtml" />
+    <Content Include="Views\products\Create.cshtml" />
+    <Content Include="Views\Shop\Category.cshtml" />
+    <Content Include="Views\Shop\Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\build\" />
     <Folder Include="Content\css\maps\" />
-    <Folder Include="Content\Upload\" />
     <Folder Include="Content\UploadedFiles\" />
     <Folder Include="Content\Upload\" />
     <Folder Include="Content\vendors\" />

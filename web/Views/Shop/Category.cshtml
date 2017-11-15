@@ -1,22 +1,18 @@
 ﻿@using domaine.entities
 @using SkiingTheWorld_PI.Domaine.Entities
-
-
 @{
-    ViewBag.Title = "SubCategory";
+    ViewBag.Title = "Category";
     Layout = "~/Views/Shared/_Home.cshtml";
 }
 
-
 <!-- BREADCRUMBS -->
 <section class="breadcrumb ski parallax margbot50">
-			
+
     <!-- CONTAINER -->
     <div class="container">
         <h2>Women</h2>
     </div><!-- //CONTAINER -->
 </section><!-- //BREADCRUMBS -->
-
 <!-- SHOP BLOCK -->
 <section class="shop" style="padding-top: 2%">
 
@@ -33,10 +29,12 @@
                 <div class="sidepanel widget_categories">
                     <h3>Product Categories</h3>
                     <ul>
+                        
                         @foreach (souscategorie sc in ((List<souscategorie>) ViewBag.sCats))
-{
+                        {
                             <li><a href="@Url.Action("SubCategory",new {cat=@Request.QueryString["cat"],scat=@sc.Id})">@sc.Libelle</a></li>
                         }
+                      
                     </ul>
                 </div><!-- //CATEGORIES -->
 
@@ -88,15 +86,16 @@
                                     </div>
                                 </div>
                                 <div class="tovar_description clearfix">
-                                    <a class="tovar_title" href="product-page.html">@Html.Raw(item.Name)
-                                    </a>
-                                    <span class="tovar_price">Dt @Html.Raw(item.price)</span>
-                                </div>
-                                <div class="tovar_content">What makes our cashmere so special? We start with the finest yarns from an Italian mill known for producing some of the softest cashmere out there.</div>
+                                    <a class="tovar_title" href="product-page.html">
+                                        @Html.Raw(item.Name)
+                                </a>
+                                <span class="tovar_price">Dt @Html.Raw(item.price)</span>
                             </div>
-                        </div><!-- //TOVAR1 -->
+                            <div class="tovar_content">What makes our cashmere so special? We start with the finest yarns from an Italian mill known for producing some of the softest cashmere out there.</div>
+                        </div>
+                    </div><!-- //TOVAR1 -->
                     }
-                    
+
                 </div><!-- //ROW -->
 
                 <hr>
@@ -121,3 +120,4 @@
         </div><!-- //ROW -->
     </div><!-- //CONTAINER -->
 </section><!-- //SHOP -->
+

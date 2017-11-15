@@ -23,5 +23,10 @@ namespace SkiingTheWorld_PI.Domaine.Entities
 
         public CategorieEnum MarquecategorieProd { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            souscategorie other = (souscategorie) obj;
+            return other.Id == this.Id;
+        }
     }
 }

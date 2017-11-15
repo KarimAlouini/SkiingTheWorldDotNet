@@ -19,6 +19,24 @@ namespace web
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Category",
+                url: "{controller}/{action}/{cat}",
+                defaults: new { controller = "Home", action = "Index", cat = UrlParameter.Optional }
+            );
+
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "SubCategory",
+                url: "{controller}/{action}/{cat}/{scat}",
+                defaults: new { controller = "Home", action = "Index", cat = UrlParameter.Optional, scat = UrlParameter.Optional }
+            );
+
+
+
         }
     }
 }

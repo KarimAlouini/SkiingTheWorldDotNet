@@ -1613,7 +1613,7 @@ a.add_lovelist:hover {
 	margin-top:9px;
 	padding:0;
 }
-#slider1, #slider2 {float:left; padding-right:98px;}
+#slider1, #slider2 {float:left; }
 #carousel1,
 #carousel2 {
 	position:absolute;
@@ -2388,15 +2388,15 @@ ul.comments li ul li{
 /*	BREADCRUMBS
 /*-----------------------------------------------------------------------------------*/
 .breadcrumb {
-	margin:0;
-	padding:0;
-	min-height:140px;
-	border-radius:0;
-	border-bottom:70px solid rgba(255,255,255,0.65);
-	background-color:inherit;
-	background-repeat:no-repeat;
-	background-size:cover;
-	background-image:url(../images/breadcrumb_bg2.jpg);
+    margin:0;
+    padding:0;
+    min-height:300px;
+    border-radius:0;
+    border-bottom:200px solid rgba(255,255,255,0.65);
+    background-color:inherit;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-image:url(../images/breadcrumb_bg2.jpg);
 }
 
 
@@ -2410,8 +2410,9 @@ ul.comments li ul li{
 	background-repeat:no-repeat;
 	background-size:cover;
 }
-.breadcrumb.women {background-image:url(../images/breadcrumb_bg1.jpg);}
-.breadcrumb.men {background-image:url(../images/breadcrumb_bg2.jpg);}
+.breadcrumb.women {background-image:url(~/Content/images/breadcrumb_bg1.jpg);}
+.breadcrumb.men {background-image:url(~/Content/images/breadcrumb_bg2.jpg);}
+.breadcrumb.ski {background-image:url(../images/breadcrumb_bg3.jpg);}
 
 .breadcrumb h2 {
 	margin:0;

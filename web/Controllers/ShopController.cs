@@ -18,26 +18,55 @@ namespace web.Controllers
             return View(sousCategorieService.GetAll());
         }
 
-        public ActionResult SubCategory(string cat,string scat)
+        public ActionResult SubCategory(int cat,int scat)
         {
             ProductService s = new ProductService();
             SousCategorieService sousCategorieService = new SousCategorieService();
 
-            
+            ViewBag.sCats = sousCategorieService.GetAll().Where(sc => ((int)sc.MarquecategorieProd) == cat).ToList();
 
             List<product> p = new List<product>();
 
             foreach (product product in s.GetAll())
             {
-                souscategorie.CategorieEnum e = (souscategorie.CategorieEnum)Enum.Parse(typeof(souscategorie.CategorieEnum), cat, true);
-                if (product.sousCategorieProd.Libelle.Equals(scat) &&
-                    product.sousCategorieProd.MarquecategorieProd.Equals(e))
+                
+                
+                if (product.sousCategorieProd.Equals(sousCategorieService.GetById(scat)) &&
+                   ((int) product.sousCategorieProd.MarquecategorieProd) == cat)
                 {
                     p.Add(product);
                 }
             }
 
             return View(p);
+        }
+
+        public ActionResult Category(int cat)
+        {
+
+
+            SousCategorieService sousCategorieService = new SousCategorieService();
+            ViewBag.sCats = sousCategorieService.GetAll().Where(sc=> ((int)sc.MarquecategorieProd) == cat).ToList();
+
+            ProductService s = new ProductService();
+
+            List<product> p = new List<product>();
+
+            foreach (product product in s.GetAll())
+            {
+
+                if (
+                    ((int)product.sousCategorieProd.MarquecategorieProd) == cat)
+                {
+                    p.Add(product);
+                }
+            }
+            return View(p);
+        }
+
+        public ActionResult Product(int idProdcut)
+        {
+            return View();
         }
 
         

@@ -44,6 +44,9 @@ namespace domaine.entities
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer<SWModel>(null);
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<access_tokens>()
                 .Property(e => e.value)
                 .IsUnicode(false);
@@ -423,3 +426,4 @@ namespace domaine.entities
         }
     }
 }
+

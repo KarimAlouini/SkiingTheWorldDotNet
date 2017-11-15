@@ -1,6 +1,6 @@
 ﻿
 @using SkiingTheWorld_PI.Domaine.Entities
-@model IEnumerable<SkiingTheWorld_PI.Domaine.Entities.souscategorie>
+@model List<SkiingTheWorld_PI.Domaine.Entities.souscategorie>
 
 @{
 	ViewBag.Title = "Index";
@@ -18,81 +18,79 @@
 	<div class="container">
 		<h3 class="pull-left"><b>Product catalog list</b></h3>
 				
-		<div class="pull-right">
-			<a href="women.html" >Back to shop<i class="fa fa-angle-right"></i></a>
-		</div>
+		
 	</div><!-- //CONTAINER -->
 </section><!-- //PAGE HEADER -->
 
 	<!-- PRODUCT CATALOG SECTION -->
 <section class="product_catalog_block">
 
-    <!-- CONTAINER -->
-    <div class="container">
+	<!-- CONTAINER -->
+	<div class="container">
 
-        <!-- ROW -->
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
-                <img class="product_catalog_img product_women" src="images/tovar/product_adult.jpg" alt="" />
-                <p class="product_catalog_title">Adult</p>
-                <ul class="product_catalog_list">
-                    @foreach (souscategorie sc in Model)
-                    {
-                        if (sc.MarquecategorieProd == souscategorie.CategorieEnum.Adult)
-                         {
-                             <li><a href="@Url.Action("SubCategory",new {cat=@sc.MarquecategorieProd.ToString(),scat=@sc.Libelle})">@sc.Libelle</a></li>
+		<!-- ROW -->
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
+				<img class="product_catalog_img product_women" src="~/Content/images/tovar/product_adult.jpg" alt="" />
+                <a href="@Url.Action("Category",new {cat=0})"><p class="product_catalog_title">Adult</p></a>
+				<ul class="product_catalog_list">
+					@foreach (souscategorie sc in Model)
+					{
+						if (sc.MarquecategorieProd == souscategorie.CategorieEnum.Adult)
+						 {
+							 <li><a href="@Url.Action("SubCategory",new {cat=(int)@sc.MarquecategorieProd,scat=@sc.Id})">@sc.Libelle</a></li>
 
-                         }
-                    }
-                   
-                </ul>
-            </div>
+						 }
+					}
+				   
+				</ul>
+			</div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
-                <img class="product_catalog_img product_men" src="images/tovar/product_children.jpg" alt="" />
-                <p class="product_catalog_title">Childen</p>
-                <ul class="product_catalog_list">
-                    @foreach (souscategorie sc in Model)
-                    {
-                        if (sc.MarquecategorieProd == souscategorie.CategorieEnum.Children)
-                         {
-                             <li><a href="@Url.Action("SubCategory",new {cat=@sc.MarquecategorieProd.ToString(),scat=@sc.Libelle})">@sc.Libelle</a></li>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
+				<img class="product_catalog_img product_men" src="~/Content/images/tovar/product_children.jpg" alt="" />
+				<p class="product_catalog_title">Childen</p>
+				<ul class="product_catalog_list">
+					@foreach (souscategorie sc in Model)
+					{
+						if (sc.MarquecategorieProd == souscategorie.CategorieEnum.Children)
+						 {
+							 <li><a href="@Url.Action("SubCategory",new {cat=(int)@sc.MarquecategorieProd,scat=@sc.Id})">@sc.Libelle</a></li>
 
-                         }
-                    }
-                </ul>
-            </div>
-        </div><!-- //ROW -->
-    </div><!-- //CONTAINER -->
+						 }
+					}
+				</ul>
+			</div>
+		</div><!-- //ROW -->
+	</div><!-- //CONTAINER -->
 </section><!-- //PRODUCT CATALOG SECTION -->
 
 	
 <!-- PRODUCT CATALOG SECTION -->
 <section class="product_catalog_block">
 			
-    <!-- CONTAINER -->
-    <div class="container">
+	<!-- CONTAINER -->
+	<div class="container">
 				
-        <!-- ROW -->
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix col-lg-offset-3 col-md-offset-3">
-                <img class="product_catalog_img product_girls" src="images/tovar/product_girls.jpg" alt="" />
-                <p class="product_catalog_title">Accessories</p>
-                <ul class="product_catalog_list">
-                    @foreach (souscategorie sc in Model)
-                    {
-                        if (sc.MarquecategorieProd == souscategorie.CategorieEnum.Article)
-                         {
-                             <li><a href="@Url.Action("SubCategory",new {cat=@sc.MarquecategorieProd.ToString(),scat=@sc.Libelle})">@sc.Libelle</a></li>
+		<!-- ROW -->
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix col-lg-offset-3 col-md-offset-3">
+				<img class="product_catalog_img product_girls" src="~/Content/images/tovar/product_accessoire.jpg" alt="" />
+				<p style="    padding-left: 53%" class="product_catalog_title">Accessories</p>
+				<ul class="product_catalog_list">
+					@foreach (souscategorie sc in Model)
+					{
+						if (sc.MarquecategorieProd == souscategorie.CategorieEnum.Article)
+						 {
+							 <li><a href="@Url.Action("SubCategory",new {cat=(int)@sc.MarquecategorieProd,scat=@sc.Id})">@sc.Libelle</a></li>
 
-                         }
-                    }
-                </ul>
-            </div>
+						 }
+					}
+				</ul>
+			</div>
 					
-            
-        </div><!-- //ROW -->
-    </div><!-- //CONTAINER -->
+			
+		</div><!-- //ROW -->
+	</div><!-- //CONTAINER -->
 </section><!-- //PRODUCT CATALOG SECTION -->
 		
 		
