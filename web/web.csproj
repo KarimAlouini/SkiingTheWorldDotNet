@@ -208,8 +208,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MiscController.cs" />
     <Compile Include="Controllers\productsController.cs" />
     <Compile Include="Controllers\RecharginCouponsController.cs" />
     <Compile Include="Controllers\RevendeurController.cs" />
@@ -604,13 +606,21 @@
     <Content Include="Views\products\Index.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Shop\SubCategory.cshtml" />
+    <Content Include="Views\products\Create.cshtml" />
+    <Content Include="Views\Misc\Error403.cshtml" />
+    <Content Include="Views\Misc\Error404.cshtml" />
+    <Content Include="Views\Revendeur\AllSellers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\build\" />
     <Folder Include="Content\css\maps\" />
     <Folder Include="Content\Upload\" />
+    <Folder Include="Content\UploadedFiles\" />
+    <Folder Include="Content\Upload\" />
     <Folder Include="Content\vendors\" />
+    <Folder Include="UploadedFiles\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

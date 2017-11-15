@@ -23,5 +23,7 @@ namespace domaine.entities
 
         [StringLength(255)]
         public string phoneNumber { get; set; }
+
+        public string ImageName { get; set; }
     }
 }

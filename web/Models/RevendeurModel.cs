@@ -11,7 +11,7 @@ namespace web.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage ="Please specify a name")]
-        public String Name { get; set; }
+        public string Name { get; set; }
         [Required(ErrorMessage = "Please specify a phone number")]
         [Display(Name ="Phone number")]
         [StringLength(13,ErrorMessage ="Please input a valid phone number")]
@@ -22,6 +22,8 @@ namespace web.Models
         public double Latitude { get; set; }
         [Required(ErrorMessage ="Please input an email address")]
         [DataType(DataType.EmailAddress,ErrorMessage ="Please specify a valid email address")]
-        public String Email { get; set; }
+        public string Email { get; set; }
+
+        public string ImageName { get; set; }
     }
 }

@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 90%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 90%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<div id="map"></div>
+    
+
+    <script src="~/Content/jquery-3.2.1.min.js"></script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYpzzvQUJUIRfMb5_Gqplp4ZF_5dPJ0hg&callback=initMap">
+</script>
+    
+<script>
+    function initMap() {
+        var myLatLng = { lat: -25.363, lng: 131.044 };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: myLatLng
+        });
+
+      
+
+        $.ajax({
+            url: '@Url.Action("GetSellersJson","Revendeur")',
+            method: 'get',
+            success: function (data) {
+              
+                var sellers = JSON.parse(data);
+                jQuery.each(sellers,
+                    function (key, value) {
+                        var myLatLng = { lat: value.latitude, lng: value.longitude };
+                        var marker = new google.maps.Marker({
+                            position: myLatLng,
+                            map: map,
+                            title: value.name
+                        });
+                        
+                    });
+                for (i = 0; i < sellers.size; i++) {
+                   
+
+                    
+
+                    add
+                }
+
+               
+            }
+            
+        })
+    }
+</script>
+
+</body>
+
+
+</html>

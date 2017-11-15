@@ -5,9 +5,14 @@
     Layout = "~/Views/Shared/_BackOffice.cshtml";
 }
 
+@section CSS
+{
+    
+<link href="~/Content/css/fileinput.min.css" rel="stylesheet" />
+}
 <h2>Create</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create","Revendeur",FormMethod.Post,new {enctype= "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -53,6 +58,18 @@
                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
+                
+
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  <input id="file" type="file" name="file" multiple="true"/>
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+                
+
             </div>
 
             <div class="form-group">
@@ -64,6 +81,16 @@
     }
   
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts
+{
+    
+    <script src="~/Content/js/fileinput.min.js"></script>
+    <script>
+        $('#file').fileinput();
+
+    </script>
+}

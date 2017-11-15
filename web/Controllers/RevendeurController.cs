@@ -1,9 +1,11 @@
 ﻿using domaine.entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using SpecificServices;
 using web.Models;
 
@@ -33,13 +35,13 @@ namespace web.Controllers
 
                 });
 
-              
+              System.Diagnostics.Debug.WriteLine(item.ImageName);
             }
 
 
 
 
-            return View(lM);
+            return View(rvs.GetAll());
         }
 
         // GET: Revendeur/Details/5
@@ -56,9 +58,6 @@ namespace web.Controllers
                Email = pe.email,
                Id = pe.id
 
-
-
-
             };
             return View(pm);
         }
@@ -72,7 +71,7 @@ namespace web.Controllers
 
         // POST: Revendeur/Create
         [HttpPost]
-        public ActionResult Create(RevendeurModel collection)
+        public ActionResult Create(RevendeurModel collection,HttpPostedFileBase File)
         {
 
             seller s1 = new seller
@@ -82,17 +81,24 @@ namespace web.Controllers
                 phoneNumber = collection.tel,
                 email = collection.Email,
                 latitude = collection.Latitude,
-                longitude = collection.Longitude
+                longitude = collection.Longitude,
+                ImageName =  collection.ImageName
             };
 
 
+            
+                if (File.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(new Random().Next().ToString() + File.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Upload"), _FileName);
 
+                    File.SaveAs(path);
+                    s1.ImageName = _FileName;
+                }
+            
 
-
-              
-
-            rvs.Add(s1);
-            rvs.Commit();
+                rvs.Add(s1);
+                 rvs.Commit();
 
                 return RedirectToAction("Index");
             
@@ -148,6 +154,17 @@ namespace web.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult AllSellers()
+        {
+            return View();
+        }
+
+        public string GetSellersJson()
+        {
+            RevendeurService s = new RevendeurService();
+            return JsonConvert.SerializeObject(s.GetAll());
         }
     }
 }

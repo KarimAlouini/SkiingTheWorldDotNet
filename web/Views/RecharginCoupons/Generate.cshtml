@@ -5,30 +5,35 @@
     Layout = "~/Views/Shared/_BackOffice.cshtml";
 }
 
-<h2>Generate</h2>
+@section title{
+    Generate new coupons
+}
 <form action="@Url.Action("Generate","RecharginCoupons")" method="post">
     <div class="row">
 
         <div class="col-md-10 col-md-offset-1 text-center">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <h3>Number of coupons</h3>
                 <input class="knob" name="count" />
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <h3>Amount</h3>
                 <input class="knob" name="amount" />
             </div>
         </div>
         <br/>
-        <div class="center-block col-md-2 col-md-offset-5"><button class="btn btn-success" type="submit">Generate</button></div>
+        <div style="text-align: right" class="center-block col-md-12 col-md-offset-2">
+            <button  class="btn btn-success text-right" type="submit">Generate</button>
+        </div>
+        
     </div>
 </form>
 
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div style="text-align: right" class="center-block col-md-12 col-md-offset-2">
+    <button  class="btn btn-success text-right" type="submit">@Html.ActionLink("Back to List", "Index")</button>
 </div>
+
 
 @section scripts
 {

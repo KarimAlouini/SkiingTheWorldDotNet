@@ -103,6 +103,9 @@
     <Compile Include="Migrations\201711141411324_last.cs" />
     <Compile Include="Migrations\201711141411324_last.Designer.cs">
       <DependentUpon>201711141411324_last.cs</DependentUpon>
+    <Compile Include="Migrations\201711141736259_Added image to seller.cs" />
+    <Compile Include="Migrations\201711141736259_Added image to seller.Designer.cs">
+      <DependentUpon>201711141736259_Added image to seller.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201711141440041_user.cs" />
     <Compile Include="Migrations\201711141440041_user.Designer.cs">
