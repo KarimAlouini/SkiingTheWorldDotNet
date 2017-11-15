@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="services\ProductService.cs" />
     <Compile Include="services\UserService.cs" />
     <Compile Include="services\SousCategorieService.cs" />
     <Compile Include="services\RechargingCouponService.cs" />

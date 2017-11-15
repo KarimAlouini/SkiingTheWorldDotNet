@@ -100,12 +100,17 @@
     <Compile Include="entities\testlevel.cs" />
     <Compile Include="entities\user.cs" />
     <Compile Include="entities\user_event.cs" />
-    <Compile Include="Migrations\201711140003079_adding sellers.cs" />
-    <Compile Include="Migrations\201711140003079_adding sellers.Designer.cs">
-      <DependentUpon>201711140003079_adding sellers.cs</DependentUpon>
     <Compile Include="Migrations\201711141411324_last.cs" />
     <Compile Include="Migrations\201711141411324_last.Designer.cs">
       <DependentUpon>201711141411324_last.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711141440041_user.cs" />
+    <Compile Include="Migrations\201711141440041_user.Designer.cs">
+      <DependentUpon>201711141440041_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711142346449_categorie.cs" />
+    <Compile Include="Migrations\201711142346449_categorie.Designer.cs">
+      <DependentUpon>201711142346449_categorie.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,10 +122,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711140003079_adding sellers.resx">
-      <DependentUpon>201711140003079_adding sellers.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\201711141411324_last.resx">
       <DependentUpon>201711141411324_last.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711141440041_user.resx">
+      <DependentUpon>201711141440041_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711142346449_categorie.resx">
+      <DependentUpon>201711142346449_categorie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -47,7 +47,7 @@ namespace web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,libelle")] souscategorie souscategorie)
+        public ActionResult Create([Bind(Include = "id,libelle,MarquecategorieProd")] souscategorie souscategorie)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,libelle")] souscategorie souscategorie)
+        public ActionResult Edit([Bind(Include = "id,libelle,MarquecategorieProd")] souscategorie souscategorie)
         {
             if (ModelState.IsValid)
             {

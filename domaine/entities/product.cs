@@ -11,18 +11,12 @@ namespace domaine.entities
     public partial class product
     {
 
-        public enum CategorieEnum
-        {
-            Adult,
-            Children,
-            Article
-        }
+       
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Reference { get; set; }
         
-        public CategorieEnum MarquecategorieProd { get; set; }
 
         [StringLength(255)]
         public string Description { get; set; }

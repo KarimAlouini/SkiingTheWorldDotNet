@@ -6,10 +6,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using domaine.entities;
 using Newtonsoft.Json;
-using SpecificServices;
-using SpecificServices.services;
 using web.Models;
 using web.Util;
 
@@ -17,7 +14,7 @@ namespace web.Controllers
 {
     public class UserController : Controller
     {
-        public string BaseUrl = "http://localhost:18080/SkiWorld-web/v0/users";
+        public string BaseUrl = "http://192.168.0.100:18080/SkiWorld-web/v0/users";
         // GET: User
         public ActionResult Login()
         {

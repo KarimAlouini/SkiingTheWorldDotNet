@@ -8,6 +8,6 @@ namespace web.Util
     public class MessageResponse
     {
         public int Code { get; set; }
-        public string Message { get; set; }
+        public Object Message { get; set; }
     }
 }

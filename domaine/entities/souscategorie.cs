@@ -8,10 +8,20 @@ namespace SkiingTheWorld_PI.Domaine.Entities
 
     public partial class souscategorie
     {
+        public enum CategorieEnum
+        {
+            Adult,
+            Children,
+            Article
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [StringLength(255)]
         public string Libelle { get; set; }
+
+        public CategorieEnum MarquecategorieProd { get; set; }
+
     }
 }
