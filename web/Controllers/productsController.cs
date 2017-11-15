@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using domaine.entities;
 using Newtonsoft.Json;
+using web.App_Start;
 using web.Util;
 
 namespace web.Controllers
@@ -43,8 +44,18 @@ namespace web.Controllers
         // GET: products/Create
         public ActionResult Create()
         {
-            ViewBag.sousCategorieProdId = new SelectList(db.souscategories, "Id", "Libelle");
-            return View();
+            user u = (user) Session["user"];
+            if (u != null)
+            {
+                if (u.role == "ROLE_AGENT")
+                {
+                    ViewBag.sousCategorieProdId = new SelectList(db.souscategories, "Id", "Libelle");
+                    return View();
+                }
+                
+            }
+
+            return new HttpStatusCodeResult(403);
         }
 
         // POST: products/Create
@@ -55,9 +66,11 @@ namespace web.Controllers
         public ActionResult Create([Bind(Include = "Reference,Description,Marque,Modele,Name,Photo,Quantity,Color,Size,price,sousCategorieProdId,userId")] product product,HttpPostedFileBase File)
         {
 
+
+
             if (ModelState.IsValid)
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://192.168.0.100:18080/SkiWorld-web/v0/badword");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Config.URL + "badword");
                 request.Method = "POST";
                 request.Headers.Add("text", product.Description);
                 using (var reader =new StreamReader(request.GetResponse().GetResponseStream(),Encoding.UTF8))
@@ -76,7 +89,8 @@ namespace web.Controllers
                             File.SaveAs(path);
                             product.Photo= _FileName;
                         }
-
+                        user u = (user)Session["user"];
+                        product.userId = u.id;
                         db.product.Add(product);
                         db.SaveChanges();
                         return RedirectToAction("Index");

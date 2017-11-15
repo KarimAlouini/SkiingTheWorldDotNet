@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls.Expressions;
 using domaine.entities;
 using SkiingTheWorld_PI.Domaine.Entities;
 using SpecificServices.services;
@@ -18,6 +19,7 @@ namespace web.Controllers
             return View(sousCategorieService.GetAll());
         }
 
+        [Route("SubCategory")]
         public ActionResult SubCategory(int cat,int scat)
         {
             ProductService s = new ProductService();
@@ -41,6 +43,7 @@ namespace web.Controllers
             return View(p);
         }
 
+        [Route("Category")]
         public ActionResult Category(int cat)
         {
 
@@ -64,9 +67,32 @@ namespace web.Controllers
             return View(p);
         }
 
-        public ActionResult Product(int idProdcut)
+        public ActionResult Product(int id)
         {
-            return View();
+            ProductService ps = new ProductService();
+            product p = ps.GetById(id);
+            if (p == null)
+                return new HttpNotFoundResult();
+            List<product> others = new List<product>();
+
+
+
+            do
+            {
+                int index = new Random().Next(1, ps.GetAll().Count());
+                System.Diagnostics.Debug.WriteLine(ps.GetAll().Count());
+                product toAdd = ps.GetAll().ToList()[index];
+                if (others.Where(pro => pro.Reference == toAdd.Reference && pro.Reference != id).Count() == 0)
+                {
+                    others.Add(toAdd);
+                }
+               
+            } while (others.Count != 3);
+            
+
+            ViewBag.others = others;
+           
+            return View(p);
         }
 
         
