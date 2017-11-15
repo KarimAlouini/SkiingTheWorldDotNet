@@ -74,8 +74,8 @@ namespace domaine.entities
 
         [StringLength(255)]
         public string phoneNumber { get; set; }
-        
 
+        public double balance { get; set; }
         public string role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
