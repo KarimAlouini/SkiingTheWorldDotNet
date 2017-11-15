@@ -8,7 +8,21 @@
 @section CSS
 {
     
-<link href="~/Content/css/fileinput.min.css" rel="stylesheet" />
+    <link href="~/Content/css/fileinput.min.css" rel="stylesheet" />
+<style>
+     /* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+     #map {
+         height: 500px;
+     }
+     /* Optional: Makes the sample page fill the window. */
+     html, body {
+         height: 90%;
+         margin: 0;
+         padding: 0;
+     }
+</style>
+
 }
 <h2>Create</h2>
 
@@ -51,6 +65,16 @@
                     @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
                 </div>
             </div>
+            
+            <div class="form-group">
+                
+                    <label class="control-label col-md-2">Add coordinates</label>
+                
+               
+                <div class="col-md-10">
+                    <button id="openModal" type="button" class=" col-md-4 col-md-offset-3 center  btn btn-primary">click to add coordinates</button>
+                </div>
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -85,6 +109,25 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div id="map"></div>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts
 {
     
@@ -92,5 +135,63 @@
     <script>
         $('#file').fileinput();
 
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYpzzvQUJUIRfMb5_Gqplp4ZF_5dPJ0hg&callback=initMap">
+    </script>
+    <script>
+
+
+        $(document).ready(function() {
+            $('#openModal').on('click',
+                function () {
+
+                    $('#myModal').modal('toggle');
+                });
+
+            $('#myModal').on('shown.bs.modal', function () {
+                google.maps.event.trigger(map, "resize");
+            });
+        });
+        function initMap() {
+            var mapOptions = {
+                zoom: 6,
+                center: new google.maps.LatLng(40.7143528, -74.0059731),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+
+
+
+            $.ajax({
+                url: '@Url.Action("GetSellersJson","Revendeur")',
+                method: 'get',
+                success: function (data) {
+
+                    var sellers = JSON.parse(data);
+                    jQuery.each(sellers,
+                        function (key, value) {
+                            var myLatLng = { lat: value.latitude, lng: value.longitude };
+                            var marker = new google.maps.Marker({
+                                position: myLatLng,
+                                map: map,
+                                zoom:4,
+                                title: value.name
+                            });
+
+                        });
+
+
+                }
+
+            });
+
+
+        }
+
+        function loadData() {
+
+        }
     </script>
 }

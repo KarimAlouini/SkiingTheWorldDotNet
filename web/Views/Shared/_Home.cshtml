@@ -50,7 +50,7 @@
                     <div class="container clearfix">
                         <ul class="secondary_menu">
                             
-                           @if (u != null)
+                           @if (u == null)
                            {
 
                                <li><a href="my-account.html">Register</a></li>
@@ -66,12 +66,14 @@
                           
                         </ul>
 
-                        <div class="live_chat"><a href="javascript:void(0);"><i class="fa fa-comment-o"></i> </a></div>
-                    
+                        @if(u != null){
+                            <div class="live_chat"><a href="javascript:void(0);"><i class="fa fa-money"></i> <div class="phone_top"></div>@Html.Raw(u.balance) </a></div>
+                        }
+
                     @{
                         if (u != null)
                         {
-                            <div class="phone_top">Hello @Html.Raw(u.login) <a href="tel:1 800 888 2828">(+216)91524867</a></div>
+                            <div class="phone_top">Hello @Html.Raw(u.login) </div>
                         }
                     }
                         
@@ -85,7 +87,7 @@
 
                         <!-- LOGO -->
                         <div class="logo">
-                            <a href="index.html"><img src="~/Content/images/skilogo.png" alt="" style="max-width: 83.1%;" /></a>
+                            <a href="@Url.Action("Index","Home")"><img src="~/Content/images/skilogo.png" alt="" style="max-width: 83.1%;" /></a>
                         </div><!-- //LOGO -->
                         <!-- SEARCH FORM -->
                         <div class="top_search_form">

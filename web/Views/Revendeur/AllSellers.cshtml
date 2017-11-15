@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "../Shared/_Home.cshtml";
 }
 
 <html>
@@ -9,7 +9,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
         #map {
-            height: 90%;
+            height: 500px;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -17,63 +17,93 @@
             margin: 0;
             padding: 0;
         }
+
+        
     </style>
 </head>
 
 
 <body>
-
-
-<div id="map"></div>
+<section class="breadcrumb parallax margbot30"></section>
+<!-- //BREADCRUMBS -->
+		
+		
+<!-- PAGE HEADER -->
+<section class="page_header">
+			
+    <!-- CONTAINER -->
+    <div class="container">
+        <h3 class="pull-left"><b>Our sellers</b></h3>
+				
+       
+    </div><!-- //CONTAINER -->
+</section><!-- //PAGE HEADER -->
     
 
-    <script src="~/Content/jquery-3.2.1.min.js"></script>
+<section class="contacts_block">
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYpzzvQUJUIRfMb5_Gqplp4ZF_5dPJ0hg&callback=initMap">
-</script>
-    
-<script>
-    function initMap() {
-        var myLatLng = { lat: -25.363, lng: 131.044 };
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: myLatLng
-        });
-
-      
-
-        $.ajax({
-            url: '@Url.Action("GetSellersJson","Revendeur")',
-            method: 'get',
-            success: function (data) {
-              
-                var sellers = JSON.parse(data);
-                jQuery.each(sellers,
-                    function (key, value) {
-                        var myLatLng = { lat: value.latitude, lng: value.longitude };
-                        var marker = new google.maps.Marker({
-                            position: myLatLng,
-                            map: map,
-                            title: value.name
-                        });
-                        
-                    });
-                for (i = 0; i < sellers.size; i++) {
-                   
-
+    <div class="container" >
+        <div class="row padbot30">
+            <div id ="map"class=" col-md-offset-1 col-lg-offset-1 col-lg-10 col-md-10 padbot30">
+                <div id="map">
                     
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                    add
+
+@section scripts
+{
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYpzzvQUJUIRfMb5_Gqplp4ZF_5dPJ0hg&callback=initMap">
+    </script>
+    
+    <script>
+        function initMap() {
+            var mapOptions = {
+                zoom: 6,
+                center: new google.maps.LatLng(40.7143528, -74.0059731),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+         
+
+            
+
+            $.ajax({
+                url: '@Url.Action("GetSellersJson","Revendeur")',
+                method: 'get',
+                success: function (data) {
+
+                    var sellers = JSON.parse(data);
+                    jQuery.each(sellers,
+                        function (key, value) {
+                            var myLatLng = { lat: value.latitude, lng: value.longitude };
+                            var marker = new google.maps.Marker({
+                                position: myLatLng,
+                                map: map,
+                                zoom:4,
+                                title: value.name
+                            });
+
+                        });
+
+
                 }
 
-               
-            }
-            
-        })
-    }
-</script>
+            });
+
+
+        }
+
+       
+    </script>
+
+}
+
+
 
 </body>
 

@@ -3580,11 +3580,12 @@ table tr.cart_item td.product-subtotal {
 /*	MY ACCOUNT
 /*-----------------------------------------------------------------------------------*/
 .my_account {
+
 	padding-top:250px;
 	background-image:url(../images/my_account_bg.jpg);
 }
 
-.my_account_block {background-color:#fff; margin-bottom:54px;}
+.my_account_block {background-color:rgba(255,255,255,0.72); margin-bottom:54px;}
 .my_account_block h2 {
 	margin:0 0 39px;
 	font-weight:900;
@@ -3593,7 +3594,7 @@ table tr.cart_item td.product-subtotal {
 
 .my_account_block .login {
 	float:left;
-	width:50%;
+	width:100%;
 	padding:30px 28px;
 	border-right:1px solid #ccc;
 }
