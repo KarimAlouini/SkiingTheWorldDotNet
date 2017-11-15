@@ -133,8 +133,10 @@
                         </div><!-- //LOVE LIST -->
                         <!-- MENU -->
                         <ul class="navmenu center">
-                            <li class="sub-menu first active">
-                                <a href="javascript:void(0);">Home</a>
+                            <li class="sub-menu  @if(this.ViewContext.RouteData.Values["controller"].ToString().Equals("Home")){
+                                                          @Html.Raw("active");
+                                                      }">
+                                <a href="@Url.Action("Index","Home")">Home</a>
 
                             </li>
                             <li class="sub-menu">
@@ -169,6 +171,13 @@
                                         </ol>
                                     </li>
                                 </ul><!-- //MEGA MENU -->
+                            </li>
+                        
+                            <li class="sub-menu first @if(this.ViewContext.RouteData.Values["controller"].ToString().Equals("Revendeur")){
+                                @Html.Raw("active");
+                                }">
+                                <a href="@Url.Action("AllSellers","Revendeur")">our sellers</a>
+
                             </li>
 
                         </ul><!-- //MENU -->
