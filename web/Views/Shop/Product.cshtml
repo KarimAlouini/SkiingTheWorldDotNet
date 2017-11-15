@@ -1,4 +1,5 @@
-﻿
+﻿@using domaine.entities
+@model domaine.entities.product
 @{
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Home.cshtml";
@@ -21,32 +22,22 @@
                 <h3><b>other sweaters</b></h3>
 
                 <ul class="tovar_items_small clearfix">
-                    <li class="clearfix">
-                        <img class="tovar_item_small_img" src="images/tovar/women/1.jpg" alt="" />
-                        <a href="product-page.html" class="tovar_item_small_title">Embroidered bib peasant top</a>
-                        <span class="tovar_item_small_price">$88.00</span>
-                    </li>
-                    <li class="clearfix">
-                        <img class="tovar_item_small_img" src="images/tovar/women/2.jpg" alt="" />
-                        <a href="product-page.html" class="tovar_item_small_title">Merino tippi sweater in geometric</a>
-                        <span class="tovar_item_small_price">$67.00</span>
-                    </li>
-                    <li class="clearfix">
-                        <img class="tovar_item_small_img" src="images/tovar/women/3.jpg" alt="" />
-                        <a href="product-page.html" class="tovar_item_small_title">Merino triple-stripe elbow-patch sweater</a>
-                        <span class="tovar_item_small_price">$94.00</span>
-                    </li>
-                    <li class="clearfix">
-                        <img class="tovar_item_small_img" src="images/tovar/women/4.jpg" alt="" />
-                        <a href="product-page.html" class="tovar_item_small_title">Collection cashmere getaway hoodie</a>
-                        <span class="tovar_item_small_price">$228.00</span>
-                    </li>
+                    @foreach (product item in ((List<product>) ViewBag.others))
+                    {
+                        <li class="clearfix">
+                            <img class="tovar_item_small_img" src="@Url.Content("~/Content/Upload/")@Html.DisplayFor(modelItem=>item.Photo)" alt=""/>
+                            <a href="@Url.Action("Product",new {id=item.Reference})" class="tovar_item_small_title">@Html.Raw(item.Name)</a>
+                            <span class="tovar_item_small_price">@Html.Raw(item.price)</span>
+                        </li>
+                    }
+                    
+                    
                 </ul>
             </div><!-- //SIDEBAR TOVAR DETAILS -->
             <!-- TOVAR DETAILS WRAPPER -->
             <div class="col-lg-9 col-md-9 tovar_details_wrapper clearfix">
                 <div class="tovar_details_header clearfix margbot35">
-                    <h3 class="pull-left"><b>Sweaters</b></h3>
+                    <h3 class="pull-left"><b>@Html.Raw(Model.sousCategorieProd.Libelle)</b></h3>
 
                     <div class="tovar_details_pagination pull-right">
                         <a class="fa fa-angle-left" href="javascript:void(0);"></a>
@@ -71,7 +62,7 @@
                         <div class="tovar_article">88-305-676</div>
                         <div class="clearfix tovar_brend_price">
                             <div class="pull-left tovar_brend">Calvin Klein</div>
-                            <div class="pull-right tovar_view_price">$98.00</div>
+                            <div class="pull-right tovar_view_price">@Html.Raw(Model.price)</div>
                         </div>
                         <div class="tovar_color_select">
                             <p>Color</p>
@@ -84,7 +75,16 @@
                             <a class="sizeXS" href="javascript:void(0);">XS</a>
                         </div>
                         <div class="tovar_view_btn">
-                            <a class="add_bag" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>Add to bag</a>
+                            @if (Model.Quantity == 0)
+                            {
+                                <a disabled class="add_bag btn inactive" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>Sold out !</a>
+
+                            }
+                            else
+                            {
+                                <a class="add_bag btn inactive" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>Add to bag</a>
+
+                            }
                         </div>
 
                     </div>

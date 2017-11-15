@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                                 <div class="tovar_description clearfix">
-                                    <a class="tovar_title" href="product-page.html">@Html.Raw(item.Name)
+                                    <a class="tovar_title" href="@Url.Action("Product",new {id=item.Reference})">@Html.Raw(item.Name)
                                     </a>
                                     <span class="tovar_price">Dt @Html.Raw(item.price)</span>
                                 </div>
