@@ -156,39 +156,29 @@
         function initMap() {
             var mapOptions = {
                 zoom: 6,
-                center: new google.maps.LatLng(40.7143528, -74.0059731),
+                center: new google.maps.LatLng(36.8065, 10.1815),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+             google.maps.event.addListener(map, 'click', function(event) {
+                 var marker = new google.maps.Marker({
+                     position: event.LatLng,
+                     map: map
+                 });
+
+                 map.setCenter(event.LatLng);
+             });
 
 
 
-            $.ajax({
-                url: '@Url.Action("GetSellersJson","Revendeur")',
-                method: 'get',
-                success: function (data) {
-
-                    var sellers = JSON.parse(data);
-                    jQuery.each(sellers,
-                        function (key, value) {
-                            var myLatLng = { lat: value.latitude, lng: value.longitude };
-                            var marker = new google.maps.Marker({
-                                position: myLatLng,
-                                map: map,
-                                zoom:4,
-                                title: value.name
-                            });
-
-                        });
-
-
-                }
-
-            });
 
 
         }
+
+        
+        
+
 
         function loadData() {
 
