@@ -12,6 +12,7 @@
 {
     <!-- Bootstrap Colorpicker -->
     <link href="~/Content/vendors/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link href="~/Content/css/fileinput.min.css" rel="stylesheet" />
 }
 
 <h2>Edit product</h2>
@@ -80,7 +81,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" name="file" id="file" required="" />
                 @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -116,4 +117,16 @@
         </div>
     </div>
 }
+@section scripts
+{
+    <!-- Bootstrap Colorpicker -->
+    <script src="~/Content/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <script src="~/Content/js/fileinput.min.js"></script>
+    <script>
+        $('#file').fileinput();
+    </script>
+}
+
+
+
 

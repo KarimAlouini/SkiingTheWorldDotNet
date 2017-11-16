@@ -1,0 +1,33 @@
+﻿@using domaine.entities
+@using web.Controllers
+
+@{
+    Layout = null;
+}
+
+
+@{
+    List<product> products = ViewBag.products;
+}
+
+@foreach (product item in products)
+{
+    <div class="tovar_wrapper col-lg-4 col-md-4 col-sm-6 col-xs-6 col-ss-12 padbot40">
+        <div class="tovar_item clearfix">
+            <div class="tovar_img">
+                <div class="tovar_img_wrapper">
+                    <img  class="" src="@Url.Content("~/Content/Upload/")@Html.DisplayFor(modelItem=>item.Photo)" alt="" />
+                    <img class="img_h" src="images/tovar/women/1_2.jpg" alt="" />
+                </div>
+                                   
+            </div>
+            <div class="tovar_description clearfix">
+                <a class="tovar_title" href="@Url.Action("Product",new {id=item.Reference})">
+                    @Html.Raw(item.Name)
+                </a>
+                <span class="tovar_price">Dt @Html.Raw(item.price)</span>
+            </div>
+            <div class="tovar_content">@Html.Raw(item.Description)</div>
+        </div>
+    </div><!-- //TOVAR1 -->
+}

@@ -48,7 +48,7 @@
 
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
 				<img class="product_catalog_img product_men" src="~/Content/images/tovar/product_children.jpg" alt="" />
-				<p class="product_catalog_title">Childen</p>
+			    <a href="@Url.Action("Category",new {cat=1})"><p class="product_catalog_title">Childen</p></a>
 				<ul class="product_catalog_list">
 					@foreach (souscategorie sc in Model)
 					{
@@ -75,7 +75,7 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix col-lg-offset-3 col-md-offset-3">
 				<img class="product_catalog_img product_girls" src="~/Content/images/tovar/product_accessoire.jpg" alt="" />
-				<p style="    padding-left: 53%" class="product_catalog_title">Accessories</p>
+			    <a href="@Url.Action("Category",new {cat=2})"><p style="    padding-left: 53%" class="product_catalog_title">Accessories</p></a>
 				<ul class="product_catalog_list">
 					@foreach (souscategorie sc in Model)
 					{

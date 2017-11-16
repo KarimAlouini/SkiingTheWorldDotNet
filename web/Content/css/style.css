@@ -1261,6 +1261,8 @@ header {
 	position:absolute !Important;
 	left:0;
 	top:0;
+    height: 200px;
+    width: auto;
 	transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 }
@@ -1453,7 +1455,7 @@ a.add_lovelist:hover {
 .tovar_img {
 	overflow:hidden;
 	position:relative;
-	text-align:center;
+	text-align:center;height: 200px;width: auto;
 }
 .tovar_img img {
 	position:static;

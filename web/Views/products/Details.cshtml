@@ -5,48 +5,24 @@
     Layout = "~/Views/Shared/_BackOffice.cshtml";
 }
 
-<h2>Details</h2>
+@section title
+{
+    PRODUCTS
+}
+
 
 <div>
-    <h4>product</h4>
+    <h4>Product detail</h4>
     <hr />
+    <div class="back-to-list">
+        @Html.ActionLink("Back to List", "Index") |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Reference }) 
+    </div>
+    <br />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.sousCategorieProd.Libelle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sousCategorieProd.Libelle)
-        </dd>
-
-        
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Marque)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Marque)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Modele)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Modele)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </dt>
 
         <dd>
@@ -54,23 +30,31 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Photo)
+            Marque
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Photo)
+            @Html.DisplayFor(model => model.Marque)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
+            Modele
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Quantity)
+            @Html.DisplayFor(model => model.Modele)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Color)
+            Sub Category
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sousCategorieProd.Libelle)
+        </dd>
+
+        <dt>
+            Color
         </dt>
 
         <dd>
@@ -78,7 +62,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Size)
+            Size
         </dt>
 
         <dd>
@@ -86,7 +70,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.price)
+            Price
         </dt>
 
         <dd>
@@ -94,16 +78,28 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.userId)
+            Description
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.userId)
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            Photo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            Quantity
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Reference }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -22,23 +22,44 @@ namespace web.Controllers
         // GET: products
         public ActionResult Index()
         {
-            var product = db.product.Include(p => p.sousCategorieProd);
-            return View(product.ToList());
+            user u = (user)Session["user"];
+            if (u != null)
+            {
+                if (u.role == "ROLE_AGENT")
+                {
+                    var product = db.product.Include(p => p.sousCategorieProd);
+                    return View(product.ToList().Where(pr=>pr.userId ==u.id));
+                }
+
+            }
+
+            return new HttpStatusCodeResult(403);
         }
 
         // GET: products/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            user u = (user)Session["user"];
+            if (u != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (u.role == "ROLE_AGENT")
+                {
+
+                    if (id == null)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+                    product product = db.product.Find(id);
+                    if (product == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(product);
+                }
+
             }
-            product product = db.product.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
+
+            return new HttpStatusCodeResult(403);
         }
 
         // GET: products/Create
@@ -49,6 +70,7 @@ namespace web.Controllers
             {
                 if (u.role == "ROLE_AGENT")
                 {
+                    
                     ViewBag.sousCategorieProdId = new SelectList(db.souscategories, "Id", "Libelle");
                     return View();
                 }
@@ -79,10 +101,8 @@ namespace web.Controllers
                     MessageResponse msg = JsonConvert.DeserializeObject<MessageResponse>(responsetext);
                     if (msg.Code == 0)
                     {
-                        System.Diagnostics.Debug.WriteLine("zis1");
                         if (File.ContentLength > 0)
                         {
-                            System.Diagnostics.Debug.WriteLine("zis2");
                             string _FileName = Path.GetFileName(new Random().Next().ToString() + File.FileName);
                             var path = Path.Combine(Server.MapPath("~/Content/Upload"), _FileName);
 
@@ -97,7 +117,6 @@ namespace web.Controllers
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine("zis");
                         
                         List<string> badworsList =JsonConvert.DeserializeObject <List<string>>(msg.Message.ToString());
                      
@@ -116,17 +135,27 @@ namespace web.Controllers
         // GET: products/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            user u = (user)Session["user"];
+            if (u != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (u.role == "ROLE_AGENT")
+                {
+                    if (id == null)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+                    product product = db.product.Find(id);
+                    if (product == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    ViewBag.sousCategorieProdId = new SelectList(db.souscategories, "Id", "Libelle", product.sousCategorieProdId);
+                    return View(product);
+                }
+
             }
-            product product = db.product.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.sousCategorieProdId = new SelectList(db.souscategories, "Id", "Libelle", product.sousCategorieProdId);
-            return View(product);
+
+            return new HttpStatusCodeResult(403);
         }
 
         // POST: products/Edit/5
@@ -149,16 +178,27 @@ namespace web.Controllers
         // GET: products/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            user u = (user)Session["user"];
+            if (u != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (u.role == "ROLE_AGENT")
+                {
+                    if (id == null)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+                    product product = db.product.Find(id);
+                    if (product == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(product);
+
+                }
+
             }
-            product product = db.product.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
+
+            return new HttpStatusCodeResult(403);
         }
 
         // POST: products/Delete/5

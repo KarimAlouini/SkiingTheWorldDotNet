@@ -95,6 +95,34 @@ namespace web.Controllers
             return View(p);
         }
 
+         [HttpPost]
+        public ActionResult RenderProducts(int? cat,int? scat,String search)
+            {
+
+                ProductService s = new ProductService();
+                List<product> products = s.GetAll().ToList();
+
+                if (scat == null)
+                {
+                    products = products.Where(p => ((int) p.sousCategorieProd.MarquecategorieProd) == cat)
+                        .ToList();
+                }
+
+            if(scat != null && cat != null)
+                {
+                products = products.Where(p => ((int)p.sousCategorieProd.MarquecategorieProd) == cat && p.sousCategorieProd.Id == scat)
+                    .ToList();
+            }
+
+                if (search != null)
+                {
+                    products = products.Where(p => p.Description.ToLower().Contains(search.ToLower()) || p.Name.ToLower().Contains(search.ToLower())).ToList();
+                }
+
+                ViewBag.products = products;
+
+                return PartialView();
+            }
         
     }
 }

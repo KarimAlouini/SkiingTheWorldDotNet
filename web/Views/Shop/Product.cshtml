@@ -19,7 +19,7 @@
 
             <!-- SIDEBAR TOVAR DETAILS -->
             <div class="col-lg-3 col-md-3 sidebar_tovar_details">
-                <h3><b>other sweaters</b></h3>
+                <h3><b>other products</b></h3>
 
                 <ul class="tovar_items_small clearfix">
                     @foreach (product item in ((List<product>) ViewBag.others))
@@ -39,11 +39,7 @@
                 <div class="tovar_details_header clearfix margbot35">
                     <h3 class="pull-left"><b>@Html.Raw(Model.sousCategorieProd.Libelle)</b></h3>
 
-                    <div class="tovar_details_pagination pull-right">
-                        <a class="fa fa-angle-left" href="javascript:void(0);"></a>
-                        <span>2 of 34</span>
-                        <a class="fa fa-angle-right" href="javascript:void(0);"></a>
-                    </div>
+                    
                 </div>
 
                 <!-- CLEARFIX -->
@@ -51,28 +47,28 @@
                     <div class="tovar_view_fotos clearfix">
                         <div id="slider2" class="flexslider">
                             <ul class="slides">
-                                <li><a href="javascript:void(0);"><img src="images/tovar/women/1.jpg" alt="" /></a></li>
+                                <li><a href="javascript:void(0);"><img src="@Url.Content("~/Content/Upload/")@Html.DisplayFor(modelItem=>Model.Photo)" alt="" /></a></li>
                             </ul>
                         </div>
 
                     </div>
 
                     <div class="tovar_view_description">
-                        <div class="tovar_view_title">Popover Sweatshirt in Floral Jacquard</div>
-                        <div class="tovar_article">88-305-676</div>
+                        <div class="tovar_view_title">@Html.Raw(Model.Name)</div>
+                        <div class="tovar_article">Ref : @Html.Raw(Model.Reference)</div>
                         <div class="clearfix tovar_brend_price">
-                            <div class="pull-left tovar_brend">Calvin Klein</div>
-                            <div class="pull-right tovar_view_price">@Html.Raw(Model.price)</div>
+                            <div class="pull-left tovar_brend">@Html.Raw(Model.Modele) - @Html.Raw(Model.Modele)</div>
+                            <div class="pull-right tovar_view_price">Dt @Html.Raw(Model.price)</div>
                         </div>
                         <div class="tovar_color_select">
                             <p>Color</p>
-                            <a class="color1" href="javascript:void(0);"></a>
+                            <a style="background-color: @Html.Raw(Model.Color)" href="javascript:void(0);"></a>
                         </div>
                         <div class="tovar_size_select">
                             <div class="clearfix">
                                 <p class="pull-left">SIZE</p>
                             </div>
-                            <a class="sizeXS" href="javascript:void(0);">XS</a>
+                            <a class="sizeXS" href="javascript:void(0);">@Html.Raw(Model.Size)</a>
                         </div>
                         <div class="tovar_view_btn">
                             @if (Model.Quantity == 0)
@@ -96,8 +92,7 @@
                         <li>Reviews (2)</li>
                     </ul>
                     <div class="box visible">
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst. </p>
+                        <p>@Html.Raw(Model.Description)</p>
                     </div>
 
                     <div class="box">
