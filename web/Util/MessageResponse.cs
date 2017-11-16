@@ -10,4 +10,6 @@ namespace web.Util
         public int Code { get; set; }
         public Object Message { get; set; }
     }
+
+   
 }

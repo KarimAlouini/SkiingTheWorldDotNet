@@ -31,5 +31,15 @@ namespace web.Controllers
 
             return View();
         }
+
+        public ActionResult Checkout()
+        {
+            return View();
+        }
+
+        public ActionResult Checkout2(string method)
+        {
+            return View();
+        }
     }
 }

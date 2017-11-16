@@ -51,5 +51,11 @@ namespace domaine.entities
 
 
         public int userId { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            product other = (product) obj;
+            return other.Reference == this.Reference;
+        }
     }
 }

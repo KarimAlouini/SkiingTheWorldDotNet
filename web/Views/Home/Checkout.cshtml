@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+@section css
+{
+    <style>
+        .checkout_nav li{
+            width:33%
+        }
+
+        .payment_meth {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+    </style>
+}
+
+<section class="breadcrumb parallax margbot30"></section>
+<!-- //BREADCRUMBS -->
+<!-- PAGE HEADER -->
+<section class="page_header">
+
+    <!-- CONTAINER -->
+    <div class="container border0 margbot0">
+        <h3 class="pull-left"><b>Checkout</b></h3>
+
+    </div><!-- //CONTAINER -->
+</section><!-- //PAGE HEADER -->
+<!-- CHECKOUT PAGE -->
+<section class="checkout_page">
+
+    <!-- CONTAINER -->
+    <div class="container">
+        <!-- CHECKOUT BLOCK -->
+        <div class="checkout_block">
+            <ul class="checkout_nav">
+                <li class="active_step">1. Payment method</li>
+                <li>2. Paiement</li>
+                <li>3. Order confirmation</li>
+                
+            </ul>
+
+           
+            <div class="checkout_form">
+                <div class="payment_meth center-block btn-group-vertical" role="group" aria-label="blabla">
+                    <form action="@Url.Action("Checkout2")" method="get">
+                        
+                   
+                    <button name="method" type="submit" value="card" type="button" class="btn btn-primary">Credit card</button>
+                    <button name="method" type="submit" value="balance" type="button" class="btn btn-default">Account balance</button>
+                    </form>
+
+                </div>
+            </div>
+        </div><!-- //CHECKOUT BLOCK -->
+    </div><!-- //CONTAINER -->
+</section><!-- //CHECKOUT PAGE -->

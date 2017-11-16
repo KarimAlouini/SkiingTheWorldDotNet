@@ -328,6 +328,10 @@ namespace domaine.entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<user>()
+                .Property(e => e.balance)
+                ;
+
+            modelBuilder.Entity<user>()
                 .Property(e => e.phoneNumber)
                 .IsUnicode(false);
 
@@ -424,6 +428,8 @@ namespace domaine.entities
 
             modelBuilder.Entity<seller>().ToTable("sellers");
         }
+
+       
     }
 }
 

@@ -5,6 +5,12 @@
     Layout = "~/Views/Shared/_Home.cshtml";
 }
 
+@section css
+{
+    
+<link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+}
+
 <!-- BREADCRUMBS -->
 <section class="breadcrumb parallax margbot30"></section>
 <!-- //BREADCRUMBS -->
@@ -75,6 +81,10 @@
                             <a class="sizeXS" href="javascript:void(0);">XS</a>
                         </div>
                         <div class="tovar_view_btn">
+                            
+                            
+                            
+
                             @if (Model.Quantity == 0)
                             {
                                 <a disabled class="add_bag btn inactive" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>Sold out !</a>
@@ -82,7 +92,7 @@
                             }
                             else
                             {
-                                <a class="add_bag btn inactive" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>Add to bag</a>
+                                <a onclick="addToCart(@Html.Raw(Model.Reference))" id="addToCat"class="add_bag btn inactive" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i>Add to bag</a>
 
                             }
                         </div>
@@ -160,3 +170,55 @@
     </div><!-- //CONTAINER -->
 </section><!-- //TOVAR DETAILS -->
 
+@section scripts
+{
+    <script src="~/Content/js/toastr.min.js"></script>
+<script src="~/Content/js/jquery-ui.js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-full-width",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+
+        function addToCart(productId) {
+            $.ajax({
+                url:'@Url.Action("Add","Cart")',
+                data: {
+                    id:productId
+                },
+                type: 'POST',
+                success:function(data) {
+                    var response = JSON.parse(data);
+                    console.log(response);
+                    if (response.Code == 0) {
+
+                        toastr["success"]("Added to cart !");
+                        getCartItemsCount();
+                        $("#cart").effect("shake");
+                        renderCart();
+
+                    } else {
+                        toastr["error"](response.Message);
+                    }
+                }
+            });
+
+        };
+
+       
+    </script>
+}

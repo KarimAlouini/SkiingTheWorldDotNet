@@ -100,21 +100,9 @@
     <Compile Include="entities\testlevel.cs" />
     <Compile Include="entities\user.cs" />
     <Compile Include="entities\user_event.cs" />
-    <Compile Include="Migrations\201711141411324_last.cs" />
-    <Compile Include="Migrations\201711141411324_last.Designer.cs">
-      <DependentUpon>201711141411324_last.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711141736259_Added image to seller.cs" />
-    <Compile Include="Migrations\201711141736259_Added image to seller.Designer.cs">
-      <DependentUpon>201711141736259_Added image to seller.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711141440041_user.cs" />
-    <Compile Include="Migrations\201711141440041_user.Designer.cs">
-      <DependentUpon>201711141440041_user.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711142346449_categorie.cs" />
-    <Compile Include="Migrations\201711142346449_categorie.Designer.cs">
-      <DependentUpon>201711142346449_categorie.cs</DependentUpon>
+    <Compile Include="Migrations\201711160031260_added balance to user.cs" />
+    <Compile Include="Migrations\201711160031260_added balance to user.Designer.cs">
+      <DependentUpon>201711160031260_added balance to user.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,14 +114,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711141411324_last.resx">
-      <DependentUpon>201711141411324_last.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711141440041_user.resx">
-      <DependentUpon>201711141440041_user.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711142346449_categorie.resx">
-      <DependentUpon>201711142346449_categorie.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711160031260_added balance to user.resx">
+      <DependentUpon>201711160031260_added balance to user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

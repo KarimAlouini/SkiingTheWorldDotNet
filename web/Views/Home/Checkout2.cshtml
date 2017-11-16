@@ -1,0 +1,130 @@
+﻿@{ ViewBag.Title = "Checkout2"; Layout = "~/Views/Shared/_Home.cshtml";
+} @section css{
+      <style>
+          .checkout_nav li {
+              width: 33%;
+          }
+
+
+      </style>
+<link href="~/Content/css/toastr.min.css" rel="stylesheet" />
+
+
+  }
+
+<section class="breadcrumb parallax margbot30"></section>
+<!-- //BREADCRUMBS -->
+<!-- PAGE HEADER -->
+<section class="page_header">
+    <!-- CONTAINER -->
+    <div class="container border0 margbot0">
+        <h3 class="pull-left">
+            <b> Checkout</b>
+        </h3>
+    </div>
+    <!-- //CONTAINER -->
+</section>
+<!-- //PAGE HEADER -->
+<!-- CHECKOUT PAGE -->
+<section class="checkout_page">
+    <!-- CONTAINER -->
+    <div class="container">
+        <!-- CHECKOUT BLOCK -->
+        <div class="checkout_block">
+            <ul class="checkout_nav">
+                <li class="done_step">1. Payment method</li>
+                <li class="active_step">2. Paiement</li>
+                <li>3. Order confirmation</li>
+            </ul>
+            <div class="checkout_form">
+                <div class="payment_meth center-block btn-group-vertical"
+                     role="group" aria-label="blabla">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <label for="cardNumber"> CARD NUMBER </label>
+                                 <input type="text" class="credit_card_number_form" id="cardNumber"
+                                                                                     placeholder="Valid Card Number" requiredautofocus / >
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-7 col-md-7">
+                                    <div class="form-group">
+                                        <label for="expityMonth"> EXPIRY DATE </label>
+                                        <div class="col-xs-6 col-lg-6 pl-ziro">
+                                            <input type="text" class="credit_card_number_form"
+                                                   id="expityMonth" id="month" placeholder="MM" required / >
+                                        </div>
+                                        <div class="col-xs-6 col-lg-6 pl-ziro">
+                                            <input type="text" id="year" class="credit_card_number_form"
+                                                   id="expityYear" placeholder="YY" required / >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5 col-md-5 pull-right">
+                                    <div class="form-group">
+                                        <label for="cvCode"> CV CODE </label> <input id="cvc"type="password"
+                                                                                     class="credit_card_number_form" id="cvCode" placeholder="CV" required / >
+                                    </div>
+                                </div>
+                            </div>
+                            <br/ > <button id="pay"
+                                      class="btn btn-success btn-lg btn-block" role="button">Pay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //CHECKOUT BLOCK -->
+    </div>
+    <!-- //CONTAINER -->
+</section>
+@section scripts
+{
+    <script src="~/Content/js/toastr.min.js"></script>
+
+    <script>
+        
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-full-width",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+
+        $('#pay').on('click',
+            function () {
+                alert('click');
+                $.ajax({
+                    type:'POST',
+                    url: '@Url.Action("Index","Payment")',
+                    data: {
+                        month: $('#month').val(),
+                        year: $('#year').val(),
+                        cvc: $('#cvc').val(),
+                        number: $('#cardNumber').val(),
+
+                    },
+                    success: function (data) {
+                        response = JSON.parse(data);
+                        if (response.Code == 0) {
+                            toastr["success"]("Payment validated");
+                        } else {
+                            toastr["error"](response.Message);
+                        }
+                    }
+                });
+            });
+    </script>
+}

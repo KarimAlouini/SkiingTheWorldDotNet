@@ -88,7 +88,7 @@
       <Name>data</Name>
     </ProjectReference>
     <ProjectReference Include="..\domaine\domain.csproj">
-      <Project>{7E4BFDFA-6A2F-439B-8924-F10192DB45BA}</Project>
+      <Project>{7e4bfdfa-6a2f-439b-8924-f10192db45ba}</Project>
       <Name>domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">

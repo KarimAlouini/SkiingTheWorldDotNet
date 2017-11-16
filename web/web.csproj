@@ -209,10 +209,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MiscController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\productsController.cs" />
     <Compile Include="Controllers\RecharginCouponsController.cs" />
     <Compile Include="Controllers\RevendeurController.cs" />
@@ -249,6 +251,7 @@
     <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\flipclock.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\toastr.min.css" />
     <Content Include="Content\dt\dataTables.bootstrap.min.css" />
     <Content Include="Content\dt\dataTables.bootstrap.min.js" />
     <Content Include="Content\dt\datatables.min.js" />
@@ -515,6 +518,8 @@
     <Content Include="Content\images\widget_newsletter.jpg" />
     <Content Include="Content\jquery-3.2.1.min.js" />
     <Content Include="Content\js\fileinput.min.js" />
+    <Content Include="Content\js\jquery-ui.js" />
+    <Content Include="Content\js\toastr.min.js" />
     <Content Include="Content\knob\jquery.knob.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -531,6 +536,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -587,11 +594,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BackOffice\Index.cshtml" />
     <Content Include="Views\Shared\_BackOffice.cshtml" />
-    <Content Include="Views\Revendeur\Create.cshtml" />
     <Content Include="Views\Shared\_Home.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
-    <Content Include="Views\Revendeur\Index.cshtml" />
-    <Content Include="Views\Revendeur\Details.cshtml" />
     <Content Include="Views\RecharginCoupons\Index.cshtml" />
     <Content Include="Views\RecharginCoupons\Generate.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
@@ -608,10 +612,20 @@
     <Content Include="Views\Shop\SubCategory.cshtml" />
     <Content Include="Views\Misc\Error403.cshtml" />
     <Content Include="Views\Misc\Error404.cshtml" />
-    <Content Include="Views\Revendeur\AllSellers.cshtml" />
     <Content Include="Views\products\Create.cshtml" />
     <Content Include="Views\Shop\Category.cshtml" />
     <Content Include="Views\Shop\Product.cshtml" />
+    <Content Include="Views\RecharginCoupons\Pay.cshtml" />
+    <Content Include="Views\RecharginCoupons\Recharge.cshtml" />
+    <Content Include="Views\Revendeur\Create.cshtml" />
+    <Content Include="Views\Revendeur\Delete.cshtml" />
+    <Content Include="Views\Revendeur\Details.cshtml" />
+    <Content Include="Views\Revendeur\Edit.cshtml" />
+    <Content Include="Views\Revendeur\Index.cshtml" />
+    <Content Include="Views\Revendeur\AllSellers.cshtml" />
+    <Content Include="Views\Cart\Content.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Home\Checkout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -622,6 +636,7 @@
     <Folder Include="Content\vendors\" />
     <Folder Include="UploadedFiles\" />
     <Folder Include="Views\Error\" />
+    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

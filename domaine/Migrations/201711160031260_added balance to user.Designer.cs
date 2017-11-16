@@ -7,13 +7,13 @@ namespace domaine.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class user : IMigrationMetadata
+    public sealed partial class addedbalancetouser : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(user));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedbalancetouser));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711141440041_user"; }
+            get { return "201711160031260_added balance to user"; }
         }
         
         string IMigrationMetadata.Source
