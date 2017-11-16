@@ -18,6 +18,14 @@ namespace SpecificServices.services
 
         }
 
+        public recharging_coupon getByCode(string code)
+        {
+            List<recharging_coupon> l = GetAll().Where(c => c.code.Equals(code)).ToList();
+            if (l.Count == 0)
+                return null;
+            return l.First();
+        }
+
         
     }
 }

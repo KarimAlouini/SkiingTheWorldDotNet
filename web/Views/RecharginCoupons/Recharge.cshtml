@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Recharge";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<section class="my_account parallax">
+			
+    <!-- CONTAINER -->
+    <div class="container">
+        <div class="my_account_block clearfix">
+            <div class="login">
+                <h2>Recharge my balance</h2>
+                @if (Request.QueryString["message"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>Coupon problem </strong>@Request.QueryString["message"]
+                    </div>
+                }
+                <form class="login_form" action="@Url.Action("Pay","RecharginCoupons")" method="post">
+                   
+                    <input class="last" type="text" name="code" value="Coupon code" onFocus="if (this.value == 'Coupon code') this.value = '';" onBlur="if (this.value == '') this.value = 'Coupon code';" />
+                    <div class="clearfix">
+                      
+                     
+                    </div>
+                    <div class="center"><input type="submit" value="Recharge"></div>
+                </form>
+            </div>
+           
+        </div>
+    </div><!-- //CONTAINER -->
+</section><!-- //PAGE 404 -->
+

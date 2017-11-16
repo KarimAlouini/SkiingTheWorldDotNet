@@ -29,6 +29,13 @@
     <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     
+    
+    <style>
+        #payModal {
+            
+        }
+    </style>
+
     @RenderSection("css",required:false)
 
 </head>
@@ -67,7 +74,7 @@
                         </ul>
 
                         @if(u != null){
-                            <div class="live_chat"><a href="javascript:void(0);"><i class="fa fa-money"></i> <div class="phone_top"></div>@Html.Raw(u.balance) </a></div>
+                            <div id="bClick" class="live_chat"><a href="javascript:void(0);"><i class="fa fa-money"></i> <div class="phone_top"></div><p id="balance">@Html.Raw(u.balance)</p> </a></div>
                         }
 
                     @{
@@ -98,39 +105,12 @@
                         </div><!-- SEARCH FORM -->
                         <!-- SHOPPING BAG -->
                         <div class="shopping_bag">
-                            <a class="shopping_bag_btn" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i><p>shopping bag</p><span>2</span></a>
-                            <div class="cart">
-                                <ul class="cart-items">
-                                    <li class="clearfix">
-                                        <img class="cart_item_product" src="~/Content/images/tovar/women/1.jpg" alt="" />
-                                        <a href="product-page.html" class="cart_item_title">popover sweatshirt in floral jacquard</a>
-                                        <span class="cart_item_price">1 × $98.00</span>
-                                    </li>
-                                    <li class="clearfix">
-                                        <img class="cart_item_product" src="~/Content/images/tovar/women/3.jpg" alt="" />
-                                        <a href="product-page.html" class="cart_item_title">japanese indigo denim jacket</a>
-                                        <span class="cart_item_price">2 × $158.00</span>
-                                    </li>
-                                </ul>
-                                <div class="cart_total">
-                                    <div class="clearfix"><span class="cart_subtotal">bag subtotal: <b>$414</b></span></div>
-                                    <a class="btn active" href="checkout.html">Checkout</a>
-                                </div>
+                            <a class="shopping_bag_btn" href="javascript:void(0);"><i class="fa fa-shopping-cart"></i><p>shopping bag</p><span id="cart">2</span></a>
+                            <div id="cart_holder" class="cart">
+                               
                             </div>
                         </div><!-- //SHOPPING BAG -->
-                        <!-- LOVE LIST -->
-                        <div class="love_list">
-                            <a class="love_list_btn" href="javascript:void(0);"><i class="fa fa-heart-o"></i><p>Love list</p><span>0</span></a>
-                            <div class="cart">
-                                <ul class="cart-items">
-                                    <li>Cart is empty</li>
-                                </ul>
-                                <div class="cart_total">
-                                    <div class="clearfix"><span class="cart_subtotal">bag subtotal: <b>$0</b></span></div>
-                                    <a class="btn active" href="checkout.html">Checkout</a>
-                                </div>
-                            </div>
-                        </div><!-- //LOVE LIST -->
+                        
                         <!-- MENU -->
                         <ul class="navmenu center">
                             <li class="sub-menu  @if(this.ViewContext.RouteData.Values["controller"].ToString().Equals("Home")){
@@ -139,22 +119,11 @@
                                 <a href="@Url.Action("Index","Home")">Home</a>
 
                             </li>
-                            <li class="sub-menu">
-                                <a href="javascript:void(0);">Shop</a>
-                                <!-- MEGA MENU -->
-                                <ul class="mega_menu megamenu_col1 clearfix">
-                                    <li class="col">
-                                        <ol>
-                                            <li><a href="women.html">sweaters</a></li>
-                                            <li><a href="women.html">shirts & tops<span>hot</span></a></li>
-                                            <li><a href="women.html">knits & tees</a></li>
-                                            <li><a href="women.html">pants</a></li>
-                                            <li><a href="women.html">denim</a></li>
-                                            <li><a href="women.html">dresses</a></li>
-                                            <li><a href="women.html">maternity</a></li>
-                                        </ol>
-                                    </li>
-                                </ul><!-- //MEGA MENU -->
+                            <li class="sub-menu @if(this.ViewContext.RouteData.Values["controller"].ToString().Equals("Shop")){
+                                                    @Html.Raw("active");
+                                                }">
+                                <a href="@Url.Action("Index","Shop")">Shop</a>
+                                
                             </li>
 
                             <li class="sub-menu">
@@ -223,9 +192,52 @@
 <script>
     if (top != self) top.location.replace(self.location.href);
 </script>
-    
-    @RenderSection("scripts",required:false)
 
+<script>
+    $(document).ready(function() {
+        $('#bClick').on('click',
+            function () {
+                $('#payModal').modal('toggle');
+            });
+
+
+       
+    });
+
+    function getCartItemsCount() {
+        console.log('count');
+        $.ajax({
+            url: '@Url.Action("Count","Cart")',
+            
+            type: 'GET',
+            success: function (data) {
+                console.log(data);
+                $('#cart').html(data);
+            }
+        });
+
+       
+    }
+
+    function renderCart() {
+        console.log('render');
+        $('#cart_holder').load('@Url.Action("Content","Cart")');
+    }
+
+  
+
+    getCartItemsCount();
+    renderCart();
+    
+    
+</script>
+    
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@RenderSection("scripts",required:false)
+    
+    
+    
+    
 </body>
 <!-- Mirrored from demo.evatheme.com/html/glammy/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Nov 2017 12:24:22 GMT -->
 </html>

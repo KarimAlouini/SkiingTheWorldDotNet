@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Generate New", "Generate")
 </p>
 
 <p>
@@ -17,16 +17,16 @@
 <table class="table table-striped" id="dt">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.amount)
+           Amount
         </th>
         <th>
             @Html.DisplayNameFor(model => model.code)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dateGenerated)
+            Date generated
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.isUsed)
+           Used
         </th>
         <th></th>
     </tr>
@@ -43,11 +43,18 @@
             @Html.DisplayFor(modelItem => item.dateGenerated)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.isUsed)
-        </td>
+           @if (item.isUsed)
+           {
+               <button class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
+           }
+           else
+           {
+            <button class="btn btn-danger">
+                <i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+                }
+</td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+           
             @Html.ActionLink("Delete", "Delete", new { id=item.id })
         </td>
     </tr>

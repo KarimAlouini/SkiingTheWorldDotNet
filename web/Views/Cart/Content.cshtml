@@ -1,0 +1,44 @@
+﻿@using domaine.entities
+
+@{
+    Layout = null;
+}
+
+@{
+    Dictionary<product, int> cart = ViewBag.cart;
+}
+<ul class="cart-items">
+   
+    @{
+        double total = 0;
+        
+    }
+    @if (cart != null)
+    {
+        foreach (product item in cart.Keys)
+        {
+            int quantity = 0;
+            for (int i = 0; i < cart[item]; i++)
+            {
+                quantity++;
+                total += item.price;
+            }
+            <li class="clearfix">
+                <img class="cart_item_product" src="@Url.Content("~/Content/Upload/")@Html.DisplayFor(modelItem => item.Photo)" alt=""/>
+                <a href="product-page.html" class="cart_item_title">@item.Name</a>
+                <span class="cart_item_price">@quantity × @item.price</span>
+            </li>
+        }
+
+        Session["total"] = total;
+
+        <div class="cart_total">
+            <div class="clearfix"><span class="cart_subtotal">bag subtotal: <b>@total</b></span></div>
+            <a class="btn active" href="checkout.html">Checkout</a>
+        </div>
+    }
+
+  
+
+
+</ul>

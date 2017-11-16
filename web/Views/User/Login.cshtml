@@ -25,7 +25,7 @@
                 }
                 <form class="login_form" action="@Url.Action("Login","User")" method="post">
                     <input type="text" name="login" value="Username or email" onFocus="if (this.value == 'Username or email') this.value = '';" onBlur="if (this.value == '') this.value = 'Username or email';" />
-                    <input class="last" type="text" name="password" value="Password" onFocus="if (this.value == 'Password') this.value = '';" onBlur="if (this.value == '') this.value = 'Password';" />
+                    <input placeholder="Password" class="last" type="password" name="password" value="" onFocus="if (this.value == 'Password') this.value = '';" onBlur="if (this.value == '') this.value = 'Password';" />
                     <div class="clearfix">
                       
                         <div class="pull-right"><a class="forgot_pass" href="javascript:void(0);" >Forgot password?</a></div>

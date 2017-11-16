@@ -1,77 +1,57 @@
-﻿using domaine.entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using domaine.entities;
 using Newtonsoft.Json;
 using SpecificServices;
 using web.Models;
 
 namespace web.Controllers
 {
+
     public class RevendeurController : Controller
     {
         RevendeurService rvs = new RevendeurService();
+        private SWModel db = new SWModel();
+
         // GET: Revendeur
         public ActionResult Index()
         {
-            var sellers = rvs.GetAll();
-            List<RevendeurModel> lM = new List<RevendeurModel>();
-            System.Diagnostics.Debug.WriteLine("count "+sellers.ToList().Count);
-            foreach (var item in sellers)
-            {
-                lM.Add(new RevendeurModel()
-                {
-                   tel = item.phoneNumber,
-                    Id = item.id,
-                    Name = item.name,
-                    Email = item.email,
-                    Latitude = item.latitude,
-                    Longitude = item.longitude
-                   
-                   
-
-                });
-
-              System.Diagnostics.Debug.WriteLine(item.ImageName);
-            }
-
-
-
-
-            return View(rvs.GetAll());
+            return View(db.seller.ToList());
         }
 
         // GET: Revendeur/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-          seller pe = rvs.GetById(id);
-
-            RevendeurModel pm = new RevendeurModel()
+            if (id == null)
             {
-                tel = pe.phoneNumber,
-                Longitude =pe.longitude ,
-                Latitude = pe.latitude,
-               Name = pe.name,
-               Email = pe.email,
-               Id = pe.id
-
-            };
-            return View(pm);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            seller seller = db.seller.Find(id);
+            if (seller == null)
+            {
+                return HttpNotFound();
+            }
+            return View(seller);
         }
 
         // GET: Revendeur/Create
         public ActionResult Create()
         {
-           
             return View();
         }
 
         // POST: Revendeur/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(RevendeurModel collection,HttpPostedFileBase File)
+        public ActionResult Create(RevendeurModel collection, HttpPostedFileBase File)
         {
 
             seller s1 = new seller
@@ -82,82 +62,99 @@ namespace web.Controllers
                 email = collection.Email,
                 latitude = collection.Latitude,
                 longitude = collection.Longitude,
-                ImageName =  collection.ImageName
+                ImageName = collection.ImageName
             };
 
 
-            
-                if (File.ContentLength > 0)
-                {
-                    string _FileName = Path.GetFileName(new Random().Next().ToString() + File.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/Upload"), _FileName);
 
-                    File.SaveAs(path);
-                    s1.ImageName = _FileName;
-                }
-            
+            if (File.ContentLength > 0)
+            {
+                string _FileName = Path.GetFileName(new Random().Next().ToString() + File.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/Upload"), _FileName);
 
-                rvs.Add(s1);
-                 rvs.Commit();
+                File.SaveAs(path);
+                s1.ImageName = _FileName;
+            }
 
-                return RedirectToAction("Index");
-            
-            
+
+            rvs.Add(s1);
+            rvs.Commit();
+
+            return RedirectToAction("Index");
+
+
         }
 
         // GET: Revendeur/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            seller seller = db.seller.Find(id);
+            if (seller == null)
+            {
+                return HttpNotFound();
+            }
+            return View(seller);
         }
 
         // POST: Revendeur/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id,latitude,longitude,email,name,phoneNumber,ImageName")] seller seller)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                db.Entry(seller).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(seller);
         }
 
         // GET: Revendeur/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            seller seller = db.seller.Find(id);
+            if (seller == null)
+            {
+                return HttpNotFound();
+            }
+            return View(seller);
         }
 
         // POST: Revendeur/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
+            seller seller = db.seller.Find(id);
+            db.seller.Remove(seller);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-
-                using (SWModel swM = new SWModel())
-                {
-                    swM.seller.Remove(swM.seller.Where(s => s.id == id).First());
-                    swM.SaveChanges();
-                }
-
-
-                return RedirectToAction("Index");
+                db.Dispose();
             }
-            catch
-            {
-                return View();
-            }
+            base.Dispose(disposing);
         }
 
         public ActionResult AllSellers()
         {
+            user u = (user)Session["user"];
+
             return View();
         }
 
@@ -167,4 +164,6 @@ namespace web.Controllers
             return JsonConvert.SerializeObject(s.GetAll());
         }
     }
+
+
 }

@@ -19,6 +19,6 @@ namespace domaine.entities
         public DateTime? dateGenerated { get; set; }
 
         [Column(TypeName = "bit")]
-        public bool? isUsed { get; set; }
+        public bool isUsed { get; set; }
     }
 }
